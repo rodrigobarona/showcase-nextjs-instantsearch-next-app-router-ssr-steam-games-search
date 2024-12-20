@@ -17,60 +17,64 @@ function formatArea(area: number | undefined) {
 }
 
 interface HitProps {
-  hit: TypesenseDocument;
+  hit: {
+    document: TypesenseDocument;
+  };
 }
 
 export default function Hit({ hit }: HitProps) {
+  const property = hit.document;
+
   return (
-    <Link href={`/property/${hit.slug_url}`}>
+    <Link href={`/property/${property.slug_url}`}>
       <Card className="w-full h-full flex flex-col overflow-hidden transition-transform hover:scale-[1.02]">
         <div className="relative h-48 w-full">
           <Image
-            src={hit.cover_photo || "/placeholder.jpg"}
-            alt={hit.title}
+            src={property.cover_photo || "/placeholder.jpg"}
+            alt={property.title}
             fill
             className="object-cover"
           />
-          {hit.is_exclusive && (
+          {property.is_exclusive && (
             <span className="absolute top-2 right-2 bg-primary text-primary-foreground px-2 py-1 rounded text-sm">
               Exclusive
             </span>
           )}
-          {hit.category_name && (
+          {property.category_name && (
             <span className="absolute bottom-2 left-2 bg-background/80 text-foreground px-2 py-1 rounded text-sm">
-              {hit.category_name}
+              {property.category_name}
             </span>
           )}
         </div>
         <div className="p-4 flex flex-col flex-1">
-          <h3 className="text-lg font-semibold mb-2 line-clamp-2">{hit.title}</h3>
+          <h3 className="text-lg font-semibold mb-2 line-clamp-2">{property.title}</h3>
           <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-            {hit.zone ? `${hit.zone}, ${hit.county}` : hit.county}
+            {property.zone ? `${property.zone}, ${property.county}` : property.county}
           </p>
           
           <div className="flex flex-wrap gap-4 mb-4">
-            {hit.rooms > 0 && (
+            {property.rooms > 0 && (
               <div className="flex items-center gap-1">
                 <BedDouble className="h-4 w-4" />
-                <span>{hit.rooms}</span>
+                <span>{property.rooms}</span>
               </div>
             )}
-            {hit.bathrooms && hit.bathrooms > 0 && (
+            {property.bathrooms && property.bathrooms > 0 && (
               <div className="flex items-center gap-1">
                 <Bath className="h-4 w-4" />
-                <span>{hit.bathrooms}</span>
+                <span>{property.bathrooms}</span>
               </div>
             )}
-            {hit.parking_spaces && hit.parking_spaces > 0 && (
+            {property.parking_spaces && property.parking_spaces > 0 && (
               <div className="flex items-center gap-1">
                 <Car className="h-4 w-4" />
-                <span>{hit.parking_spaces}</span>
+                <span>{property.parking_spaces}</span>
               </div>
             )}
-            {hit.gross_build_area && (
+            {property.gross_build_area && (
               <div className="flex items-center gap-1">
                 <Ruler className="h-4 w-4" />
-                <span>{formatArea(hit.gross_build_area)}</span>
+                <span>{formatArea(property.gross_build_area)}</span>
               </div>
             )}
           </div>
@@ -79,10 +83,10 @@ export default function Hit({ hit }: HitProps) {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Home className="h-4 w-4" />
-                <span className="text-sm">{hit.code}</span>
+                <span className="text-sm">{property.code}</span>
               </div>
               <p className="text-lg font-bold text-primary">
-                {formatPrice(hit.price, hit.price_on_application)}
+                {formatPrice(property.price, property.price_on_application)}
               </p>
             </div>
           </div>

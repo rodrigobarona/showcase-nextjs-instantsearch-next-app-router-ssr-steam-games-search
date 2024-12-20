@@ -1,5 +1,5 @@
 "use client";
-import { useHitsPerPage, UseHitsPerPageProps } from "react-instantsearch";
+import { useHitsPerPage, type UseHitsPerPageProps } from "react-instantsearch";
 
 import {
   Select,

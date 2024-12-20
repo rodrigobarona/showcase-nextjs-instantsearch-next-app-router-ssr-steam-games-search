@@ -9,6 +9,7 @@ import { typesenseConfig } from "@/lib/typesense";
 import { DynamicWidgets } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
+import { Configure } from "react-instantsearch";
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: typesenseConfig,
@@ -24,8 +25,8 @@ const hitsPerPageItems = [
     default: true,
   },
   {
-    label: "15 per page",
-    value: 15,
+    label: "24 per page",
+    value: 24,
   },
 ];
 const sortByItems = [
@@ -55,6 +56,20 @@ export default function Search() {
       routing
       future={{ preserveSharedStateOnUnmount: true }}
     >
+      <Configure
+        facets={[
+          "category_name",
+          "rooms",
+          "bathrooms",
+          "parking_spaces",
+          "zone",
+          "county",
+          "price",
+          "is_exclusive",
+          "business_type_id",
+          "availability_id",
+        ]}
+      />
       <div className="flex flex-col px-2 lg:px-0">
         <div className="flex justify-end gap-3 items-end">
           <CurrentRefinements />

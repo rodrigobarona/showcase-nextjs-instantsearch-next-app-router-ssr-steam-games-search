@@ -13,7 +13,7 @@ import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: typesenseConfig,
   additionalSearchParameters: {
-    query_by: "name",
+    query_by: "title,description,category_name",
   },
 });
 
@@ -31,23 +31,19 @@ const hitsPerPageItems = [
 const sortByItems = [
   {
     label: "Relevance",
-    value: "games",
+    value: "properties",
   },
   {
-    label: "Price Ascending",
-    value: "games/sort/price:asc",
+    label: "Price (Low to High)",
+    value: "properties/sort/price:asc",
   },
   {
-    label: "Price Descending",
-    value: "games/sort/price:desc",
+    label: "Price (High to Low)",
+    value: "properties/sort/price:desc",
   },
   {
-    label: "Positive Reviews",
-    value: "games/sort/positive:desc",
-  },
-  {
-    label: "Negative Reviews",
-    value: "games/sort/negative:desc",
+    label: "Rooms",
+    value: "properties/sort/rooms:desc",
   },
 ];
 
@@ -55,7 +51,7 @@ export default function Search() {
   return (
     <InstantSearchNext
       searchClient={typesenseInstantsearchAdapter.searchClient}
-      indexName="games"
+      indexName="properties"
       routing
       future={{ preserveSharedStateOnUnmount: true }}
     >

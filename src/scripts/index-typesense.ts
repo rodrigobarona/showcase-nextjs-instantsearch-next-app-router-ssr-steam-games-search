@@ -1,12 +1,12 @@
-import { gameSchema, typesenseSchema } from "@/lib/schema";
+import { propertySchema, type typesenseSchema } from "@/lib/schema";
 import { typesenseConfig } from "@/lib/typesense";
 import { getUnixTime, parse } from "date-fns";
 import { upAll } from "docker-compose";
-import fs from "fs";
+import fs from "node:fs";
 import ora from "ora";
-import path from "path";
+import path from "node:path";
 import { Client, Errors } from "typesense";
-import { z } from "zod";
+import type { z } from "zod";
 
 // Instantiate the Typesense client
 const client = new Client(typesenseConfig);
@@ -15,75 +15,82 @@ function parseCustomDate(dateString: string) {
   const date = parse(dateString, "MMM d, yyyy", new Date());
   const unixTime = getUnixTime(date);
 
-  if (isNaN(unixTime)) {
+  if (Number.isNaN(unixTime)) {
     return 0;
   }
 
   return unixTime;
 }
 
-function parseGames(): z.infer<typeof typesenseSchema>[] {
-  // Read through the games.jsonl file and parse their dates to UNIX timestamps
-  const cwd = process.cwd();
-  const jsonFilePath = path.join(cwd, "data", "games.jsonl");
-  try {
-    const result = fs
-      .readFileSync(jsonFilePath, "utf-8")
-      .split("\n")
-      .filter(Boolean)
-      .map((line) => {
-        const parsed = gameSchema.safeParse(JSON.parse(line));
-
-        // If the game doesn't match the schema, skip it
-        if (!parsed.success) {
-          return;
-        }
-        return {
-          ...parsed.data,
-          release_date: parseCustomDate(parsed.data.release_date),
-          hltb_single: parsed.data.hltb_single === undefined ? 0 : parsed.data.hltb_single,
-        };
-      })
-      .filter((game) => game !== undefined);
-
-    return result;
-  } catch (error) {
-    throw error;
-  }
+function parseProperties(): Promise<z.infer<typeof typesenseSchema>[]> {
+  const spinner = ora("Fetching properties from Typesense");
+  
+  return client
+    .collections("properties")
+    .documents()
+    .export()
+    .then((documents) => {
+      spinner.succeed("Properties fetched successfully");
+      return documents
+        .split("\n")
+        .filter(Boolean)
+        .map((line) => {
+          const parsed = propertySchema.safeParse(JSON.parse(line));
+          if (!parsed.success) {
+            return;
+          }
+          return {
+            ...parsed.data,
+            last_updated: parseCustomDate(parsed.data.last_updated).toString(),
+          };
+        })
+        .filter((property): property is z.infer<typeof typesenseSchema> => 
+          property !== undefined
+        );
+    });
 }
 
 async function createCollection() {
   const spinner = ora("Creating collection");
   await client.collections().create({
-    name: "games",
+    name: "properties",
     fields: [
-      { name: "name", type: "string" },
-      { name: "release_date", type: "int64" },
-      { name: "price", type: "float", facet: true },
-      { name: "positive", type: "int32", facet: true },
-      { name: "negative", type: "int32", facet: true },
-      { name: "app_id", type: "int32" },
-      { name: "min_owners", type: "int32", facet: true },
-      { name: "max_owners", type: "int32", facet: true },
-      { name: "hltb_single", type: "int32" },
+      { name: "code", type: "string" },
+      { name: "price", type: "float" },
+      { name: "title", type: "string" },
+      { name: "description", type: "string" },
+      { name: "category_name", type: "string" },
+      { name: "slug_url", type: "string" },
+      { name: "last_updated", type: "string" },
+      { name: "rooms", type: "int32" },
+      { name: "bathrooms", type: "int32", optional: true },
+      { name: "parking_spaces", type: "int32", optional: true },
+      { name: "outdoor_area", type: "int32", optional: true },
+      { name: "land_area", type: "int32", optional: true },
+      { name: "gross_build_area", type: "int32", optional: true },
+      { name: "county", type: "string", optional: true },
+      { name: "zone", type: "string", optional: true },
+      { name: "parish", type: "string", optional: true },
+      { name: "cover_photo", type: "string", optional: true },
+      { name: "is_exclusive", type: "bool", optional: true },
     ],
-    default_sorting_field: "release_date",
+    default_sorting_field: "last_updated",
   });
   spinner.succeed("Collection created");
 }
 
-async function handleCollection(games: z.infer<typeof typesenseSchema>[]) {
+async function handleCollection(properties: z.infer<typeof typesenseSchema>[]) {
   const spinner = ora("Checking collection");
   try {
-    const collection = await client.collections("games").retrieve();
+    const collection = await client.collections("properties").retrieve();
     spinner.text = "Collection already exists";
-    if (collection.num_documents === games.length) {
+    if (collection.num_documents === properties.length) {
       spinner.succeed("Collection already has the same number of documents");
       return;
     }
 
     spinner.warn("Collection has a different number of documents");
-    await client.collections("games").delete();
+    await client.collections("properties").delete();
     await createCollection();
   } catch (e: unknown) {
     if (!(e instanceof Errors.ObjectNotFound)) {
@@ -94,18 +101,18 @@ async function handleCollection(games: z.infer<typeof typesenseSchema>[]) {
   }
 }
 
-// Index the games into Typesense
-async function indexGames(games: z.infer<typeof typesenseSchema>[]) {
-  await handleCollection(games);
-  await client.collections("games").documents().import(games);
+// Index the properties into Typesense
+async function indexProperties(properties: z.infer<typeof typesenseSchema>[]) {
+  await handleCollection(properties);
+  await client.collections("properties").documents().import(properties);
 }
 
 async function main() {
   const spinner = ora();
   try {
     await upAll({ cwd: path.join(process.cwd()) });
-    const games = parseGames();
-    await indexGames(games);
+    const properties = await parseProperties();
+    await indexProperties(properties);
     spinner.succeed("Script completed successfully.");
   } catch (error) {
     spinner.fail(`An error occurred: ${error}`);

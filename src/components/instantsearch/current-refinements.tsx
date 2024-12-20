@@ -21,7 +21,8 @@ function isAttributeLabel(label: string): label is keyof typeof attributeLabelMa
 }
 
 function formatLabel(label: string): string {
-  return isAttributeLabel(label) ? attributeLabelMap[label] : label;
+  const mappedLabel = isAttributeLabel(label) ? attributeLabelMap[label] : undefined;
+  return mappedLabel !== undefined ? mappedLabel : label || "Unknown Attribute";
 }
 
 export function CurrentRefinements(props: UseCurrentRefinementsProps) {

@@ -1,20 +1,15 @@
 import type { ConfigurationOptions } from "typesense/lib/Typesense/Configuration";
 
-const {
-  TYPESENSE_HOST = "localhost",
-  TYPESENSE_PORT = 8108,
-  TYPESENSE_PROTOCOL = "http",
-  TYPESENSE_API_KEY = "xyz",
-} = process.env;
-
-export const typesenseConfig: ConfigurationOptions = {
+const typesenseConfig: ConfigurationOptions = {
   nodes: [
     {
-      host: TYPESENSE_HOST,
-      port: Number(TYPESENSE_PORT),
-      protocol: TYPESENSE_PROTOCOL,
+      host: process.env.NEXT_PUBLIC_TYPESENSE_URL?.split("://")[1].split(":")[0] || "",
+      port: Number(process.env.NEXT_PUBLIC_TYPESENSE_URL?.split(":")[2]) || 443,
+      protocol: process.env.NEXT_PUBLIC_TYPESENSE_URL?.split("://")[0] || "https",
     },
   ],
-  apiKey: TYPESENSE_API_KEY,
-  retryIntervalSeconds: 2,
+  apiKey: process.env.NEXT_PUBLIC_TYPESENSE_SEARCH_ONLY_API_KEY || "",
+  connectionTimeoutSeconds: 2,
 };
+
+export { typesenseConfig };

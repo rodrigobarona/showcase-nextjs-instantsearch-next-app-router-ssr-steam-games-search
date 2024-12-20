@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Gallery } from "@/components/gallery";
 import Hit from "@/components/instantsearch/hit";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { formatNumber } from "@/lib/utils";
 import { typesenseConfig } from "@/lib/typesense";
-import { Bath, BedDouble, Car, Euro, MapPin, Ruler } from "lucide-react";
-import { Configure, InstantSearch } from "react-instantsearch";
+import { formatNumber } from "@/lib/utils";
 import type { TypesenseDocument } from "@/types/typesense";
+import { Bath, BedDouble, Car, Euro, MapPin, Ruler } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Configure, InstantSearch } from "react-instantsearch";
 import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
 
 interface PropertyContentProps {
@@ -131,7 +131,7 @@ export function PropertyContent({ property, relatedProperties }: PropertyContent
                   <span className="font-medium">{property.parking_spaces}</span>
                 </div>
               )}
-              {property.gross_build_area && (
+              {property.gross_build_area !== undefined && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <Ruler className="h-5 w-5 mr-2" />

@@ -1,5 +1,6 @@
 import NumericMenu from "@/components/instantsearch/numeric-menu";
 import { RangeFilter } from "@/components/instantsearch/range-menu";
+import { RefinementList } from "@/components/instantsearch/refinement-list";
 import { attributeLabelMap } from "@/lib/schema";
 
 function Facet({ attribute }: { attribute: string }) {
@@ -54,6 +55,43 @@ function Facet({ attribute }: { attribute: string }) {
               { label: "3+", start: 3 },
             ]}
           />
+        </>
+      );
+    case "category_name":
+      return (
+        <>
+          <h3 className="mb-1 text-xl font-semibold">{attributeLabelMap[attribute]}</h3>
+          <RefinementList attribute={attribute} />
+        </>
+      );
+    case "county":
+      return (
+        <>
+          <h3 className="mb-1 text-xl font-semibold">{attributeLabelMap[attribute]}</h3>
+          <RefinementList attribute={attribute} />
+        </>
+      );
+    case "zone":
+      return (
+        <>
+          <h3 className="mb-1 text-xl font-semibold">{attributeLabelMap[attribute]}</h3>
+          <RefinementList attribute={attribute} />
+        </>
+      );
+    case "gross_build_area":
+    case "land_area":
+    case "outdoor_area":
+      return (
+        <>
+          <h3 className="mb-1 text-xl font-semibold">{attributeLabelMap[attribute]}</h3>
+          <RangeFilter attribute={attribute} />
+        </>
+      );
+    case "is_exclusive":
+      return (
+        <>
+          <h3 className="mb-1 text-xl font-semibold">{attributeLabelMap[attribute]}</h3>
+          <RefinementList attribute={attribute} />
         </>
       );
     default:

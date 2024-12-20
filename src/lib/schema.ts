@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 const propertySchema = z.object({
+  id: z.string(),
   code: z.string(),
   price: z.number(),
   price_on_application: z.boolean(),
@@ -20,6 +21,14 @@ const propertySchema = z.object({
   parish: z.string().optional(),
   cover_photo: z.string().optional(),
   is_exclusive: z.boolean().optional(),
+  surroundings: z.array(z.string()).optional(),
+  photos: z.array(
+    z.object({
+      url: z.string(),
+      main_photo: z.boolean(),
+      sequence: z.number(),
+    })
+  ).optional(),
 });
 
 const attributeLabelMap: { [K in keyof z.infer<typeof propertySchema>]: string } = {
@@ -42,6 +51,9 @@ const attributeLabelMap: { [K in keyof z.infer<typeof propertySchema>]: string }
   parish: "Parish",
   cover_photo: "Cover Photo",
   is_exclusive: "Exclusive",
+  id: "",
+  photos: "Photos",
+  surroundings: "Surroundings",
 };
 
 const typesenseSchema = z.object({
@@ -64,6 +76,16 @@ const typesenseSchema = z.object({
   parish: z.string().optional(),
   cover_photo: z.string().optional(),
   is_exclusive: z.boolean().optional(),
+  surroundings: z.array(z.string()).optional(),
+  photos: z
+    .array(
+      z.object({
+        url: z.string(),
+        main_photo: z.boolean(),
+        sequence: z.number(),
+      }),
+    )
+    .optional(),
 });
 
 export { attributeLabelMap, propertySchema, typesenseSchema };

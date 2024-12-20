@@ -7,6 +7,12 @@ import { useRefinementList } from "react-instantsearch";
 export function RefinementList(props: UseRefinementListProps) {
   const { items, refine } = useRefinementList(props);
 
+  // If there are no items and this isn't just an empty result,
+  // it likely means there's an issue with the facet
+  if (items.length === 0) {
+    return null;
+  }
+
   return (
     <div className="space-y-2">
       {items.map((item) => (

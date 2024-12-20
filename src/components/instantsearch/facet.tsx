@@ -11,27 +11,14 @@ import { attributeLabelMap } from "@/lib/schema";
 import { NumericMenu } from "./numeric-menu";
 import { RangeFilter } from "./range-menu";
 import { RefinementList } from "./refinement-list";
-import { useEffect, useState } from "react";
 
 interface FacetProps {
   attribute: string;
 }
 
 const Facet: React.FC<FacetProps> = ({ attribute }) => {
-  const [error, setError] = useState<boolean>(false);
-
-  useEffect(() => {
-    // Reset error state when the component mounts
-    setError(false);
-  }, []);
-
-  const handleError = () => {
-    setError(true);
-    return null;
-  };
-
   const renderFacet = () => {
-    if (!attribute || error) return null;
+    if (!attribute) return null;
 
     try {
       switch (attribute) {
@@ -105,10 +92,7 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
                 {attributeLabelMap[attribute]}
               </AccordionTrigger>
               <AccordionContent>
-                <RefinementList 
-                  attribute={attribute} 
-                  onError={handleError}
-                />
+                <RefinementList attribute={attribute} />
               </AccordionContent>
             </AccordionItem>
           );
@@ -118,7 +102,7 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
       }
     } catch (err) {
       console.error(`Error rendering facet for attribute: ${attribute}`, err);
-      return handleError();
+      return null;
     }
   };
 

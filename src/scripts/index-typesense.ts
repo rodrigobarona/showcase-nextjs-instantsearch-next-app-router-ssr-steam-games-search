@@ -2,9 +2,8 @@ import { propertySchema, type typesenseSchema } from "@/lib/schema";
 import { typesenseConfig } from "@/lib/typesense";
 import { getUnixTime, parse } from "date-fns";
 import { upAll } from "docker-compose";
-import fs from "node:fs";
-import ora from "ora";
 import path from "node:path";
+import ora from "ora";
 import { Client, Errors } from "typesense";
 import type { z } from "zod";
 
@@ -24,7 +23,7 @@ function parseCustomDate(dateString: string) {
 
 function parseProperties(): Promise<z.infer<typeof typesenseSchema>[]> {
   const spinner = ora("Fetching properties from Typesense");
-  
+
   return client
     .collections("properties")
     .documents()
@@ -44,9 +43,7 @@ function parseProperties(): Promise<z.infer<typeof typesenseSchema>[]> {
             last_updated: parseCustomDate(parsed.data.last_updated).toString(),
           };
         })
-        .filter((property): property is z.infer<typeof typesenseSchema> => 
-          property !== undefined
-        );
+        .filter((property): property is z.infer<typeof typesenseSchema> => property !== undefined);
     });
 }
 

@@ -109,12 +109,9 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
   const facetContent = renderFacet();
   return facetContent ? (
     <Card className="p-4 w-72 overflow-hidden relative">
-      <div className="overflow-auto h-full">
-        <Accordion type="single" collapsible defaultValue={attribute}>
-          {facetContent}
-        </Accordion>
-      </div>
-      <div className="absolute inset-0 bg-black opacity-50 pointer-events-none" />
+      <Accordion type="single" collapsible defaultValue={attribute}>
+        {facetContent}
+      </Accordion>
     </Card>
   ) : null;
 };

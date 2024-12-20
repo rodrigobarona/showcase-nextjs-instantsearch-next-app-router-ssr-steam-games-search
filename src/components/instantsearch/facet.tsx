@@ -109,7 +109,7 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
   const facetContent = renderFacet();
   return facetContent ? (
     <Card className="p-4">
-      <Accordion type="single" collapsible>
+      <Accordion type="single" collapsible defaultValue={attribute}>
         {facetContent}
       </Accordion>
     </Card>

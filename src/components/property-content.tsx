@@ -10,6 +10,7 @@ import type { TypesenseDocument } from "@/types/typesense";
 import { Bath, BedDouble, Car, Euro, MapPin, Ruler } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Configure, InstantSearch } from "react-instantsearch";
+import ReactMarkdown from "react-markdown";
 import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
 
 interface PropertyContentProps {
@@ -146,7 +147,9 @@ export function PropertyContent({ property, relatedProperties }: PropertyContent
           {/* Description */}
           <Card className="p-6 md:col-span-2">
             <h2 className="text-xl font-semibold mb-4">Description</h2>
-            <p className="text-muted-foreground whitespace-pre-line">{property.description}</p>
+            <ReactMarkdown className="prose max-w-none text-muted-foreground">
+              {property.description}
+            </ReactMarkdown>
           </Card>
         </div>
 

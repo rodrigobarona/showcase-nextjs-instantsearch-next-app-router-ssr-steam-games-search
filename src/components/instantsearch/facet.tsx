@@ -92,7 +92,9 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
                 {attributeLabelMap[attribute]}
               </AccordionTrigger>
               <AccordionContent>
-                <RefinementList attribute={attribute} />
+                <div className="max-h-60 overflow-y-auto">
+                  <RefinementList attribute={attribute} limit={1000} />
+                </div>
               </AccordionContent>
             </AccordionItem>
           );

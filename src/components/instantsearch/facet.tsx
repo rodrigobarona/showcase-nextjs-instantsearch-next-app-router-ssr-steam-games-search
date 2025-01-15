@@ -78,10 +78,31 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
           );
 
         // List Filters
-        case "category_name":
         case "county":
         case "zone":
         case "parish":
+          return (
+            <AccordionItem value={attribute}>
+              <AccordionTrigger className="text-xl font-semibold">
+                {attributeLabelMap[attribute]}
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="max-h-[300px] overflow-y-auto pr-2">
+                  <RefinementList
+                    attribute={attribute}
+                    limit={100}
+                    showMore={true}
+                    showMoreLimit={1000}
+                    operator="or"
+                    sortBy={["name:asc"]}
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          );
+
+        // Other List Filters
+        case "category_name":
         case "state":
         case "business_type_id":
         case "availability_id":
@@ -92,7 +113,15 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
                 {attributeLabelMap[attribute]}
               </AccordionTrigger>
               <AccordionContent>
-                <RefinementList attribute={attribute} />
+                <div className="max-h-[300px] overflow-y-auto pr-2">
+                  <RefinementList
+                    attribute={attribute}
+                    limit={100}
+                    showMore={true}
+                    showMoreLimit={1000}
+                    operator="or"
+                  />
+                </div>
               </AccordionContent>
             </AccordionItem>
           );

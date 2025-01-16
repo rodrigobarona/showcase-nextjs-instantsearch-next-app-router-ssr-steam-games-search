@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { attributeLabelMap } from "@/lib/schema";
 import { formatNumber } from "@/lib/utils";
 import { X } from "lucide-react";
-import { useCurrentRefinements, UseCurrentRefinementsProps } from "react-instantsearch";
+import { useCurrentRefinements, type UseCurrentRefinementsProps } from "react-instantsearch";
 
 const formatRefinementLabel = (label: string): string => {
   const labelParts = label.split(" ");
 
-  if (labelParts.length > 1 && isFinite(Number(labelParts[1])) && !isNaN(Number(labelParts[1]))) {
+  if (labelParts.length > 1 && Number.isFinite(Number(labelParts[1])) && !Number.isNaN(Number(labelParts[1]))) {
     const formattedNumber = formatNumber(Number(labelParts[1]));
     return `${labelParts[0]} ${formattedNumber}${labelParts.slice(2).join(" ")}`;
   }

@@ -165,7 +165,7 @@
     - Any of: string, null
       - #0: string
       - #1: null
-  - availability_id (string | null)
+  - availability_ids (string | null)
     - Any of: string, null
       - #0: string
       - #1: null
@@ -392,7 +392,7 @@
     - Any of: string, null
       - #0: string
       - #1: null
-  - availability_id (string | null)
+  - availability_ids (string | null)
     - Any of: string, null
       - #0: string
       - #1: null
@@ -741,7 +741,7 @@
 "index": true,
 "infix": false,
 "locale": "",
-"name": "availability_id",
+"name": "availability_ids",
 "optional": true,
 "sort": false,
 "stem": false,
@@ -1215,7 +1215,7 @@
 
 {
 "address": "ZEN - Rua Azinhaga do Poço de Baixo, piso 2, (A202)",
-"availability_id": "reservado-visivel-no-site",
+"availability_ids": "reservado-visivel-no-site",
 "bathrooms": 1,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -1486,7 +1486,7 @@
 {
 "document": {
 "address": "Élou Jardins | Rua Amadeo de Souza-Cardoso",
-"availability_id": "reservado-visivel-no-site",
+"availability_ids": "reservado-visivel-no-site",
 "bathrooms": 2,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -1767,7 +1767,7 @@
 {
 "document": {
 "address": "Rua Gonçalo Crespo e Rua José de Melo Pereira de Vasconcelos, 1ºB (1º direito)",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 4,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -2071,7 +2071,7 @@
 {
 "document": {
 "address": "Travessa da Giesta 5 Quinta do Perú",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 6,
 "business_type_id": "sale",
 "category_id": "house",
@@ -2480,7 +2480,7 @@
 {
 "document": {
 "address": "R. 8 de Dezembro de 1729",
-"availability_id": "reservado-visivel-no-site",
+"availability_ids": "reservado-visivel-no-site",
 "bathrooms": 5,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -2807,7 +2807,7 @@
 {
 "document": {
 "address": "Élou | Rua Mário Eloy Pereira",
-"availability_id": "reservado-visivel-no-site",
+"availability_ids": "reservado-visivel-no-site",
 "bathrooms": 2,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -3126,7 +3126,7 @@
 {
 "document": {
 "address": "Rua Carlos Lopes, lote 7 - 1º C Lombos Sul",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 2,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -3349,7 +3349,7 @@
 {
 "document": {
 "address": "Hilton Cascais Residences - Rua de Benguela, B428, Parede, Cascais",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 1,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -3565,7 +3565,7 @@
 {
 "document": {
 "address": "Vértice | Avenida Sacadura Cabral 40",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 3,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -3930,7 +3930,7 @@
 {
 "document": {
 "address": "Rua D. José de Avillez, 141, 1dto, Bloco D",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 3,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -4328,7 +4328,7 @@
 {
 "document": {
 "address": "Rua Cidade de Tomar 262",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 3,
 "business_type_id": "sale",
 "category_id": "house",
@@ -4607,7 +4607,7 @@
 {
 "document": {
 "address": "Rua Abílio Mendes, 20 - 7º Esqº",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 4,
 "business_type_id": "sale",
 "category_id": "apartment",
@@ -4979,7 +4979,7 @@
 {
 "document": {
 "address": "Native. | Alameda Sr. da Serra",
-"availability_id": "disponivel",
+"availability_ids": "disponivel",
 "bathrooms": 0,
 "business_type_id": "sale",
 "category_id": "development",
@@ -5439,7 +5439,7 @@
 {
 "document": {
 "address": "Comissão: Prestação de serviços imobiliários do imóvel sito no Native – Belas Clube de Campo – Avenida André Jordan Nº22, Lote 101 (50% CPCV – realizado a 04/12/2024)",
-"availability_id": "reservado-visivel-no-site",
+"availability_ids": "reservado-visivel-no-site",
 "bathrooms": 0,
 "business_type_id": "sale",
 "category_id": "land",

@@ -48,7 +48,7 @@ export const attributeLabelMap = {
   gross_private_area: "Private Area",
   state: "Property State",
   business_type_id: "Transaction Type",
-  availability_id: "Availability",
+  availability_ids: "Availability",
   is_exclusive: "Exclusive Listings",
 };
 

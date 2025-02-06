@@ -58,7 +58,7 @@ export function PropertyContent({ property, relatedProperties }: PropertyContent
           "is_exclusive",
           "surroundings",
           "business_type_id",
-          "availability_id",
+          "availability_ids",
         ]}
       />
 

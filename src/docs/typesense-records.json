@@ -1,0 +1,828 @@
+{
+  "address": "NAMA Carcavelos | R. Luanda 142, Parede",
+  "areas": [
+    {
+      "area": 63,
+      "category": "Sala"
+    },
+    {
+      "area": 36,
+      "category": "Varanda"
+    },
+    {
+      "category": "Estacionamento"
+    },
+    {
+      "area": 16,
+      "category": "Suite"
+    },
+    {
+      "area": 5,
+      "category": "Casa de Banho"
+    },
+    {
+      "area": 12,
+      "category": "Quarto"
+    },
+    {
+      "area": 3,
+      "category": "Casa de Banho"
+    },
+    {
+      "area": 12,
+      "category": "Quarto"
+    },
+    {
+      "area": 5,
+      "category": "Casa de Banho"
+    },
+    {
+      "area": 22,
+      "category": "Suite"
+    },
+    {
+      "area": 8,
+      "category": "Casa de Banho"
+    },
+    {
+      "area": 9,
+      "category": "Zonas de Circulação"
+    },
+    {
+      "area": 2,
+      "category": "Lavabo"
+    },
+    {
+      "area": 2,
+      "category": "Casa de Banho"
+    },
+    {
+      "area": 5,
+      "category": "Lavandaria"
+    },
+    {
+      "area": 18,
+      "category": "Cozinha"
+    },
+    {
+      "area": 26,
+      "category": "Varanda"
+    },
+    {
+      "area": 341,
+      "category": "Terraço"
+    }
+  ],
+  "availability_id": "disponivel",
+  "bathrooms": 5,
+  "business_type_id": "sale",
+  "category_id": "apartment",
+  "category_name": "Apartamento",
+  "category_name_en": "Apartment",
+  "category_name_fr": "Appartement",
+  "code": "PF36119",
+  "county": "Cascais",
+  "county_id": "cascais",
+  "cover_photo": "https://static.portadafrente.com/PF34915/01_EXT_Bird_07_1727706463420.jpg",
+  "description": "Nama House | Carcavelos\r\n\r\nUm refúgio perfeito onde a tranquilidade se encontra com a qualidade. Encontre harmonia num apartamento com o conforto e os serviços de um hotel cinco estrelas, onde o estilo de vida, a facilidade e a natureza se unem. NAMA Carcavelos incorpora pura simplicidade, beleza natural e um local significativo onde as pessoas se conectam, melhorando o seu estilo de vida de uma forma única.\r\n\r\nOs apartamentos do Nama Carcavelos fazem parte de um Apart-Hotel de 5 Estrelas onde o proprietário pode usá-lo como residência permanente ou ocasional.\r\n\r\nLocalização\r\n\r\nSituado no sereno refúgio de Carcavelos, este destino serve como o escape perfeito. A apenas uma caminhada da praia e a poucos minutos de Lisboa, Sintra e Cascais, a acessibilidade é tão fácil quanto a brisa. O Aeroporto Internacional de Lisboa está a apenas 20 minutos de carro e os transportes públicos são de fácil acesso.\r\n\r\nO clima mantém-se agradável durante todo o ano, com mais de 260 dias de sol. Nas proximidades, a costa atlântica oferece uma variedade de atividades, desde o surf na Praia de Carcavelos, a um minuto a pé do Nama House, até desfrutar dos passeios à beira-mar e da vibrante cultura local. Existem muitas praias nas proximidades para descobrir. A Praia do Guincho, por exemplo, tem uma paisagem natural deslumbrante e é um dos grandes locais de surf da região, juntamente com bodyboard, kitesurf e windsurf. Outras atrações ao ar livre notáveis incluem o passeio marítimo da Praia de Carcavelos, o Parque Quinta da Alagoa e a Quinta de S. Gonçalo. Esta é uma localização verdadeiramente privilegiada, que lhe permite desfrutar da natureza, relaxar e conectar-se com a sua essência.\r\n\r\nApartamentos\r\n\r\nNAMA House | Carcavelos oferece 45 apartamentos que variam de tipologias de T1 a T4 Penthouses, cada um testemunho de luxo discreto e estética natural. Cuidadosamente mobiladas e totalmente equipadas, estas casas oferecem confortos modernos fundidos com um ethos de elegância minimalista.\r\n\r\nInteriores espaçosos e decoração moderna focam-se nos elementos essenciais e autênticos, criando uma atmosfera convidativa e acolhedora que se sente imediatamente como casa. As cozinhas estão totalmente equipadas e prontas para a exploração culinária, enquanto o isolamento acústico avançado garante que cada apartamento seja um santuário tranquilo de descanso e relaxamento.\r\n\r\nComodidades\r\n\r\nNAMA | Carcavelos oferece o calor e a intimidade de uma casa combinado com os serviços requintados de um boutique hotel cinco estrelas: desfrute de um treino revigorante no nosso ginásio de última geração, relaxe na nossa vibrante sala de jogos, saboreie refeições gourmet no restaurante ou aprecie um cocktail no bar. A piscina exterior e a Chef’s Kitchen na sala de eventos aumentam ainda mais as possibilidades de relaxamento e convívio social.\r\n\r\nPara maior conveniência, o nosso serviço de receção 24 horas está sempre disponível para atender às suas necessidades, oferecendo serviços de limpeza, lavandaria e engomadoria para garantir uma experiência de vida confortável e sem interrupções.\r\n\r\nServiços e comodidades incluídos:\r\n\r\n- Pacote de Mobiliário e Decoração selecionado pela **Restoration Hardware (RH)**.\r\n- Lençóis e Toalhas.\r\n- Cozinhas totalmente equipadas.\r\n- Talheres, pratos, copos, panelas e todos os utensílios de cozinha.\r\n- Receção 24 horas.\r\n- Videovigilância em áreas públicas e de circulação.\r\n\r\nServiços Disponíveis:\r\n\r\n- Restaurante 5\\* com serviço de pequeno-almoço, almoço e jantar.\r\n- Jantar Privado para Residentes / Cozinha do Chef.\r\n- Bar & Lobby.\r\n- Sala de Jogos.\r\n- Piscina e Solário.\r\n- Ginásio totalmente equipado.\r\n- Jardins Luxuriantes.\r\n- Lounge no Terraço.\r\n\r\nFAQs (Perguntas Frequentes)\r\n\r\nOs apartamentos do Nama House fazem parte de um **Apart-Hotel de 5***. A exploração dos mesmos é feita através da entidade exploradora designada, e o proprietário pode usá-lo como residência permanente ou ocasional.",
+  "description_en": "Nama | Carcavelos\r\n\r\nA perfect haven where serenity meets quality. Find harmony in an apartment with the comfort and services of a five-star hotel, where lifestyle, ease and nature come together. NAMA | Carcavelos embodies pure simplicity, natural beauty and a significant place where people connect, improving their lifestyle in a unique way.\r\n\r\nNama House apartments are part of a 5-star apart-hotel where the owner can use it as permanent or occasional residence.\r\n\r\nLocation\r\n\r\nSituated in the serene refuge of Carcavelos, this destination works as the perfect escape. Just a short walking distance from the beach and a few minutes from Lisbon, Sintra and Cascais, the accessibility is as easy as the breeze. Lisbon International Airport is only 20 minutes away by car and public transportation is easy to reach.\r\n\r\nThe climate remains pleasant all year round, with more than 260 days of sunshine. Nearby, the Atlantic coast offers a variety of activities, from surfing at the Carcavelos Beach, one minute away on foot from Nama Carcavelos, to enjoy seaside walks and a vibrant local culture. There are many beaches nearby to discover. The Guincho beach, for example, has a stunning natural landscape and is one of the great surf spots in the region, along with bodyboarding, kitesurfing and windsurfing. Other notable outdoor attractions include the seafront promenade of the Carcavelos Beach, Quinta da Alagoa Park and Quinta de S. Gonçalo. This is a truly privileged location, allowing you to enjoy nature, relax and connect with its essence.\r\n\r\nApartments\r\n\r\nNAMA | Carcavelos offers 45 apartments ranging from 1 to 4 bedroom Penthouses, being each one a statement of discreet luxury and natural aesthetics. Carefully furnished and fully equipped, these houses offer modern comforts fused with an ethos of minimalist elegance.\r\n\r\nSpacious interiors and modern decoration focus on the essential and authentic elements, creating an inviting and welcoming atmosphere that feels immediately at home. Kitchens are fully equipped and ready for culinary exploration, while advanced soundproofing ensures that each apartment is a peaceful sanctuary of rest and relaxation.\r\n\r\nAmenities\r\n\r\nNAMA | Carcavelos offers the warmth and intimacy of a home combined with the exquisite services of a five-star boutique hotel: enjoy an invigorating workout in our state-of-the-art gym, relax in our vibrant games´ room, enjoy gourmet meals in the restaurant or a cocktail at the bar. The outdoor swimming pool and the Chef’s Kitchen in the event room further increase the possibilities for relaxation and social conviviality.\r\n\r\nFor added convenience, our 24-hour front desk is always available to meet your needs, offering cleaning, laundry and ironing services to ensure a comfortable and uninterrupted living experience.\r\n\r\nServices and amenities included:\r\n\r\n- Furniture and Decoration Package selected by **Restoration Hardware (RH)**.\r\n- Sheets and towels.\r\n- Fully equipped kitchens.\r\n- Cutlery, plates, glasses, pots and all kitchen utensils.\r\n- Reception 24 hours.\r\n- Video surveillance in public and circulation areas.\r\n\r\nAvailable Services:\r\n\r\n- 5\\* restaurant with breakfast, lunch and dinner service.\r\n- Private Dinner for Residents / Chef’s Kitchen.\r\n- Bar & Lobby.\r\n- Games´ Room.\r\n- Swimming pool and solarium.\r\n- Fully equipped gym.\r\n- Luxuriant Gardens.\r\n- Lounge on the Terrace.\r\n\r\nFAQs (Frequently Asked Questions)\r\n\r\nNama House apartments are part of a 5**\\* **\\* Apart-Hotel. Its exploitation is done through the designated operator, and the owner can use it as permanent or occasional residence.",
+  "description_fr": "Nama House | Carcavelos \r\n\r\nUn refuge parfait, alliant tranquillité et qualité en toute harmonie. \r\nLes appartements offrent tout le confort et les services d'un hôtel cinq étoiles, où l’art de vivre, la convivialité et la nature sont toujours présents\r\nNAMA House | Carcavelos incarne la simplicité pure et la beauté naturelle. C’est un lieu exclusif où les gens établissent facilement des liens, améliorant leur style de vie d'une manière unique. \r\n\r\nLes appartements Nama House font partie d'un Appart-Hôtel 5 étoiles. Leur exploitation est assurée par une entreprise désignée et le propriétaire peut utiliser son appartement comme résidence permanente ou occasionnelle. \r\n\r\nEmplacement \r\n\r\nDans le havre serein de Carcavelos, cette destination est un lieu d'évasion parfait. À quelques pas de la plage et à quelques minutes de Lisbonne, Sintra et Cascais, l'accessibilité est aussi simple que la brise de mer. \r\nL'aéroport international de Lisbonne se trouve à seulement 20 minutes en voiture et les transports en commun sont facilement accessibles. \r\n\r\nLe climat est agréable toutes les saisons, avec plus de 260 jours de soleil par an. Donnant sur la côte atlantique, toute une variété d'activités s’offre à vous, du surf sur la plage de Carcavelos, à une minute à pied de Nama House, aux promenades en bord de mer et la culture locale dynamique. \r\nIl y a aussi de nombreuses plages à proximité à découvrir. La plage de Guincho, par exemple, possède un paysage naturel époustouflant et constitue l'un des meilleurs spots de surf de la région, de bodyboard, de kitesurf et de planche à voile. \r\nParmi les autres points d’intérêt, la promenade de la plage de Carcavelos, le parc Quinta da Alagoa et Quinta de S. Gonçalo sont parfaits pour des moments en plein air. Il s'agit d'un emplacement véritablement privilégié, vous permettant de profiter de la nature, de vous détendre et de vous reconnecter à votre essence. \r\n\r\nAppartements \r\n\r\nNAMA House | Carcavelos propose 45 appartements allant des deux aux cinq pièces, chacun témoignant d'un luxe discret et d'une esthétique naturelle. Soigneusement meublés et entièrement équipés, ces appartements offrent un confort moderne fusionné avec une philosophie d'élégance minimaliste. \r\n\r\nLes intérieurs spacieux et la décoration moderne se concentrent sur des éléments essentiels et authentiques, créant une atmosphère serène et accueillante, vous faisant immédiatement sentir chez vous. Les cuisines sont entièrement équipées et prêtes pour toutes les aventures culinaires. L’isolation phonique avancée garantit que chaque appartement est un sanctuaire paisible de repos et de détente. \r\n\r\nCommodités \r\n\r\nNAMA House | Carcavelos offre la chaleur et l'intimité de chez vous, combinées aux services raffinés d'un hôtel-boutique cinq étoiles : profitez d'une séance d'entraînement revigorante dans notre salle de sport ultramoderne. Détendez-vous dans notre salle de jeux animée, savourez des repas gastronomiques au restaurant ou un cocktail au bar. La piscine extérieure et la cuisine du chef dans la salle d'événements vous assurent aussi des moments de détente et d'interaction sociale. \r\n\r\nPour plus de commodité, notre service de réception 24 heures sur 24 est toujours disponible pour répondre à vos besoins, proposant des services de nettoyage, de blanchisserie et de repassage pour garantir une expérience de vie confortable et facile. \r\n\r\nServices et commodités inclus : \r\n\r\n- Forfait mobilier et décoration sélectionné par **Restoration Hardware (RH)**. \r\n- Literie et serviettes. \r\n- Cuisines entièrement équipées. \r\n- Couverts, assiettes, verres, poêles et tous les ustensiles de cuisine indispensables. \r\n- Réception 24h/\\24. \r\n- Vidéosurveillance dans les espaces publics et de circulation. \r\n\r\nServices disponibles : \r\n- Restaurant 5\\* avec service petit-déjeuner, déjeuner et dîner.\r\n - Salle à manger privée pour les résidents / cuisine du chef. \r\n- Bar et lobby. \r\n- Salle de jeux. \r\n- Piscine et solarium. \r\n- Salle de sport entièrement équipée. \r\n- Jardins luxuriants. \r\n- Salon sur la terrasse. \r\n\r\nFAQ (foire aux questions) \r\nLes appartements Nama House font partie d'un Appart-Hôtel**\\* 5 étoiles. Leur exploitation est assurée par une entreprise désignée et le propriétaire peut utiliser son appartement comme résidence permanente ou occasionnelle.",
+  "equipments": [
+    "Acesso para Deficientes",
+    "Ar Condicionado",
+    "Cozinha Equipada",
+    "Elevador",
+    "Isolamento Acústico",
+    "Isolamento Térmico",
+    "Piscina",
+    "Vidros Duplos",
+    "Carregamento Veículos Eléctricos"
+  ],
+  "equipments_en": [
+    "Disabled People Access",
+    "Air Conditioning",
+    "Equipped kitchen",
+    "Elevator",
+    "Acoustic Insulation",
+    "Thermal Insulation",
+    "Swimming Pool",
+    "Double Glazed",
+    "EV charging station"
+  ],
+  "equipments_fr": [
+    "Accès mobilité réduite",
+    "Climatisation",
+    "Cuisine équipée",
+    "Ascenseur",
+    "Isolation sonore",
+    "Isolation thermique",
+    "Piscine",
+    "Double vitrage",
+    "Borne de recharge pour voitures électriques"
+  ],
+  "floor": 4,
+  "fraction": "401",
+  "gross_private_area": 209,
+  "id": "a0cTg0000064IanIAE",
+  "is_exclusive": true,
+  "languages": ["pt", "en", "fr"],
+  "last_updated": "2025-02-06T06:32:02.837Z",
+  "latitude": 38.68380318,
+  "longitude": -9.34447592,
+  "outdoor_area": 392,
+  "parent_property_id": "a0cTg000003mHMbIAM",
+  "parish": "Carcavelos E Parede",
+  "parish_id": "cascais_carcavelos-e-parede",
+  "parking_spaces": 1,
+  "phone": "+351 214 826 830",
+  "photos": [
+    {
+      "main_photo": true,
+      "sequence": 1,
+      "url": "https://static.portadafrente.com/PF34915/01_EXT_Bird_07_1727706463420.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 2,
+      "url": "https://static.portadafrente.com/PF34915/04_EXT_Piscina_1727697517872.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 3,
+      "url": "https://static.portadafrente.com/PF34915/02_EXT_Entrada_1727697517871.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 4,
+      "url": "https://static.portadafrente.com/PF34915/36_P0_Jardim_Tardoz_01_1727697517873.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 5,
+      "url": "https://static.portadafrente.com/PF34915/03_EXT_StreetView_1727697517872.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 6,
+      "url": "https://static.portadafrente.com/PF34915/403%20-%20Roof%20Top%20_1727697476523.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 7,
+      "url": "https://static.portadafrente.com/PF34915/112%20-%20PISCINA%20_%20SALA_1727697476529.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 8,
+      "url": "https://static.portadafrente.com/PF34915/35_P1_Ginasio_02_1727697448380.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 9,
+      "url": "https://static.portadafrente.com/PF34915/30_P4_UA40_Varanda_01_1727697476526.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 10,
+      "url": "https://static.portadafrente.com/PF34915/213%20-%20SALA%20_1727697476531.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 11,
+      "url": "https://static.portadafrente.com/PF34915/10_P4_403_Sala_1727697476533.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 12,
+      "url": "https://static.portadafrente.com/PF34915/206%20-%20SALA%20_COZINHA_1727697476530.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 13,
+      "url": "https://static.portadafrente.com/PF34915/110%20-%20SALA%20_%20COZINHA%20-%20LW_1727697476528.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 14,
+      "url": "https://static.portadafrente.com/PF34915/110%20-%20SALA_VARANDA_1727697476528.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 15,
+      "url": "https://static.portadafrente.com/PF34915/401%20-%20SALA%20_%20VARANDA_1727697476522.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 16,
+      "url": "https://static.portadafrente.com/PF34915/09_P4_402_Cozinha_1727697476533.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 17,
+      "url": "https://static.portadafrente.com/PF34915/301%20-%20QUARTO%20-%20LW_1727697476519.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 18,
+      "url": "https://static.portadafrente.com/PF34915/206%20-%20QUARTO%20_VARANDA_1727697476530.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 19,
+      "url": "https://static.portadafrente.com/PF34915/404%20-%20QUARTO%20-%20LW_1727697476523.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 20,
+      "url": "https://static.portadafrente.com/PF34915/11_P4_403_Quarto_1727697476524.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 21,
+      "url": "https://static.portadafrente.com/PF34915/25_P2_206_Quarto_1727697476525.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 22,
+      "url": "https://static.portadafrente.com/PF34915/104%20-%20QUARTO%20-%20LW_1727697476527.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 23,
+      "url": "https://static.portadafrente.com/PF34915/104%20-%20COZINHA%20_%20SALA%20_1727697476509.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 24,
+      "url": "https://static.portadafrente.com/PF34915/110%20-%20QUARTO%20-%20LW_1727697476527.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 25,
+      "url": "https://static.portadafrente.com/PF34915/112%20%20-%20QUARTO_1727697476528.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 26,
+      "url": "https://static.portadafrente.com/PF34915/112%20-%20SALA_JARDIM_1727697476529.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 27,
+      "url": "https://static.portadafrente.com/PF34915/24_P3_308_IS_01_1727697476524.jpg"
+    },
+    {
+      "main_photo": false,
+      "sequence": 28,
+      "url": "https://static.portadafrente.com/PF34915/29_P4_404_IS_01_1727697476526.jpg"
+    }
+  ],
+  "plan_url": "https://portadafrente.my.salesforce.com/sfc/p/1t000000D6v6/a/Tg0000034G7h/ldMc5Vjwm5pRODyGGeW5ob4rKLKzPqydgO_4MsNbuiM",
+  "postal_code": "2775-369",
+  "price": 3166850,
+  "price_on_application": false,
+  "published_at": "2025-01-31",
+  "rooms": 4,
+  "slug_url": "penthouse-t4-cascais-venda-a0cTg0000064IanIAE",
+  "slug_url_en": "4-bedroom-penthouse-cascais-venda-a0cTg0000064IanIAE",
+  "slug_url_fr": "penthouse-5-pieces-cascais-venda-a0cTg0000064IanIAE",
+  "state_id": "under-construction",
+  "sub_category_id": "penthouse",
+  "sub_category_name": "Penthouse",
+  "surroundings": [
+    "Aeroporto",
+    "Áreas de Lazer Infantil",
+    "Auto-Estrada",
+    "Banco",
+    "Bombeiros",
+    "Centro Comercial",
+    "Centro da Cidade",
+    "Escola",
+    "Espaços Verdes",
+    "Estação Ferroviária",
+    "Estação Rodoviária",
+    "Farmácia",
+    "Ginásio",
+    "Hipermercado",
+    "Hospital",
+    "Mercado",
+    "Orientação Solar Nascente",
+    "Orientação Solar Norte",
+    "Orientação Solar Poente",
+    "Orientação Solar Sul",
+    "Piscinas",
+    "Polícia",
+    "Posto de Combustível",
+    "Praça Táxis",
+    "Praia",
+    "Transportes Públicos",
+    "Vista para Jardim",
+    "Vista para Mar",
+    "Estacionamento"
+  ],
+  "surroundings_en": [
+    "Airport",
+    "Children's play areas",
+    "Freeway",
+    "Bank",
+    "Fire department",
+    "Shopping center",
+    "Town centre",
+    "School",
+    "Green spaces",
+    "Train station",
+    "Railway station",
+    "Pharmacy",
+    "Gym",
+    "Hypermarket",
+    "Hospital",
+    "Mart",
+    "Rising Solar Orientation",
+    "Solar Orientation North",
+    "Solar Orientation West",
+    "Solar Orientation South",
+    "Pools",
+    "Police",
+    "Gas station",
+    "Taxis Square",
+    "Beach",
+    "Public Transportation",
+    "Garden View",
+    "Sea View",
+    "Parking"
+  ],
+  "surroundings_fr": [
+    "Aéroport",
+    "Aires de jeux pour enfants",
+    "Autoroute",
+    "Banque",
+    "Pompiers",
+    "Centre commercial",
+    "Centre-ville",
+    "École",
+    "Espaces verts",
+    "Gare",
+    "Gare",
+    "Pharmacie",
+    "Gym",
+    "grande surface",
+    "Hôpital",
+    "Marché",
+    "Orientation solaire croissante",
+    "Orientation solaire Nord",
+    "Orientation solaire Ouest",
+    "Orientation solaire Sud",
+    "Piscines",
+    "Police",
+    "Station-essence",
+    "Taxis Square",
+    "Plage",
+    "Transport public",
+    "Vue du jardin",
+    "Vue sur la mer",
+    "Parking"
+  ],
+  "title": "Penthouse T4, Cascais",
+  "title_en": "4 Bedroom Penthouse, Cascais",
+  "title_fr": "Penthouse 5 pièces, Cascais",
+  "updated_at": "2025-01-31",
+  "zone": "Carcavelos",
+  "zone_id": "cascais_carcavelos"
+},{
+    "address": "R. Tomás Ribeiro 79, Lisboa",
+    "areas": [
+      {
+        "area": 3.9,
+        "category": "Lavandaria"
+      },
+      {
+        "area": 7.8,
+        "category": "Casa de Banho"
+      },
+      {
+        "area": 5.56,
+        "category": "Arrecadação"
+      },
+      {
+        "category": "Estacionamento"
+      },
+      {
+        "area": 16.21,
+        "category": "Suite"
+      },
+      {
+        "area": 42.11,
+        "category": "Sala de Estar"
+      },
+      {
+        "area": 10.22,
+        "category": "Casa de Banho"
+      },
+      {
+        "area": 13.93,
+        "category": "Cozinha"
+      },
+      {
+        "area": 25.47,
+        "category": "Suite",
+        "display_name": "Master Suite"
+      },
+      {
+        "area": 9.42,
+        "category": "Hall",
+        "display_name": "Hall + Zona Circulação"
+      },
+      {
+        "area": 17.97,
+        "category": "Suite"
+      },
+      {
+        "area": 15.65,
+        "category": "Varanda"
+      },
+      {
+        "category": "Estacionamento"
+      },
+      {
+        "area": 3.41,
+        "category": "Lavabo"
+      }
+    ],
+    "availability_id": "disponivel",
+    "bathrooms": 2,
+    "business_type_id": "sale",
+    "category_id": "apartment",
+    "category_name": "Apartamento",
+    "category_name_en": "Apartment",
+    "category_name_fr": "Appartement",
+    "code": "PF36055",
+    "county": "Lisboa",
+    "county_id": "lisboa",
+    "cover_photo": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_14_final_1737807170815.jpg",
+    "description": "O edifício Tomás Ribeiro 79, localizado nas Avenidas Novas, reflete o equilíbrio entre a arquitetura tradicional de Lisboa e o design contemporâneo. Este projeto residencial exclusivo apresenta 21 apartamentos de luxo, concebidos para oferecer conforto, funcionalidade e elegância, com proximidade às melhores opções culturais, comerciais e naturais da cidade.\r\n\r\nCom uma localização privilegiada, próximo ao Parque Eduardo VII, à Fundação Calouste Gulbenkian e à Avenida da Liberdade, o empreendimento combina centralidade e tranquilidade no coração da capital portuguesa.\r\n\r\nDestaques: \r\n- Apenas 21 apartamentos exclusivos, promovendo privacidade e exclusividade.\r\n- T2 a T4, com design de interiores atemporal e materiais de alta qualidade.\r\n- Piscina interior e sauna, integradas para relaxamento e bem-estar.\r\n- Estacionamento privativo, equipado com carregadores para veículos elétricos.\r\n- Serviços de concierge, otimizando a vida urbana.\r\n- Localização silenciosa, sem impacto de ruído relacionado a atividades aeroportuárias.\r\n- Acessibilidade privilegiada, com transportes públicos à porta e ligações rodoviárias estratégicas.\r\n\r\nAs Avenidas Novas destacam-se pela fusão entre modernidade e tradição. Este bairro apresenta edifícios históricos ao lado de arquitetura contemporânea, ruas arborizadas e uma ampla oferta cultural e gastronómica. Próximo a locais emblemáticos como o El Corte Inglés, o Parque Eduardo VII, e a Fundação Calouste Gulbenkian, a área proporciona um estilo de vida sofisticado no centro de Lisboa, com acesso fácil a serviços, lazer e tranquilidade.",
+    "description_en": "The Tomás Ribeiro 79 building, located in Avenidas Novas, reflects the balance between Lisbon's traditional architecture and contemporary design. This exclusive residential project features 21 luxury apartments designed to provide comfort, functionality, and elegance, with proximity to the city's best cultural, commercial, and natural attractions.  \r\n\r\nWith a prime location near Eduardo VII Park, the Calouste Gulbenkian Foundation, and Avenida da Liberdade, the development combines centrality and tranquility in the heart of the Portuguese capital.  \r\n\r\nHighlights:\r\n- Only 21 exclusive apartments, ensuring privacy and exclusivity.  \r\n- T2 to T4, with timeless interior design and high-quality materials.  \r\n- Indoor swimming pool and sauna, dedicated to relaxation and well-being.  \r\n- Private parking, equipped with electric vehicle charging stations.  \r\n- Concierge services, enhancing urban living.  \r\n- Quiet location, free from airport-related noise.  \r\n- Strategic accessibility, with public transport at the doorstep and excellent road connections.  \r\n \r\nAvenidas Novas stands out for its harmonious blend of modernity and tradition. This neighborhood combines historic buildings with contemporary architecture, tree-lined streets, and a wide range of cultural and gastronomic offerings. Close to iconic landmarks such as El Corte Inglés, Eduardo VII Park, and the Calouste Gulbenkian Foundation, the area offers a sophisticated lifestyle in the heart of Lisbon, with easy access to services, leisure, and tranquility.",
+    "description_fr": "L’immeuble Tomás Ribeiro 79, situé dans les Avenidas Novas, reflète l’équilibre entre l’architecture traditionnelle de Lisbonne et un design contemporain. Ce projet résidentiel exclusif comprend 21 appartements de luxe, conçus pour offrir confort, fonctionnalité et élégance, à proximité des meilleures options culturelles, commerciales et naturelles de la ville.\r\n\r\nBénéficiant d’un emplacement privilégié, proche du Parc Eduardo VII, de la Fondation Calouste Gulbenkian et de l’Avenida da Liberdade, le projet combine centralité et tranquillité au cœur de la capitale portugaise.\r\n\r\nPoints Forts :\r\n- Seulement 21 appartements exclusifs, garantissant intimité et exclusivité.\r\n- T2 à T4, avec un design intérieur intemporel et des matériaux de haute qualité.\r\n- Piscine intérieure et sauna, dédiés à la détente et au bien-être.\r\n- Parking privé, équipé de bornes de recharge pour véhicules électriques.\r\n- Services de conciergerie, facilitant la vie urbaine.\r\n- Emplacement calme, sans impact sonore lié aux activités aéroportuaires.\r\n- Accessibilité stratégique, avec transports publics à la porte et excellentes connexions routières.\r\n\r\nLes Avenidas Novas se distinguent par une fusion harmonieuse entre modernité et tradition. Ce quartier combine des bâtiments historiques et une architecture contemporaine, des rues bordées d’arbres et une offre culturelle et gastronomique variée. À proximité de lieux emblématiques tels que El Corte Inglés, le Parc Eduardo VII et la Fondation Calouste Gulbenkian, la zone propose un style de vie sophistiqué en plein centre de Lisbonne, avec un accès facile aux services, aux loisirs et à la tranquillité.",
+    "equipments": [
+      "Adega",
+      "Ar Condicionado",
+      "Arrecadação",
+      "Blackouts",
+      "Cozinha Equipada",
+      "Domótica",
+      "Elevador",
+      "Estores Electricos",
+      "Exaustor",
+      "Forno",
+      "Frigorífico",
+      "Garagem",
+      "Isolamento Acústico",
+      "Isolamento Térmico",
+      "Máquina de Lavar Louça",
+      "Máquina de Lavar Roupa",
+      "Máquina de Secar Roupa",
+      "Painéis fotovoltaicos",
+      "Piscina aquecida",
+      "Piscina interior",
+      "Piso Radiante",
+      "Placa Vitrocerâmica",
+      "Poliban",
+      "Porta Alta Segurança",
+      "Portão Eléctrico",
+      "Roupeiros",
+      "Sauna",
+      "Painéis Solares",
+      "Terraço",
+      "Toalheiros Aquecidos",
+      "Video Porteiro",
+      "Vidros Duplos",
+      "Microondas",
+      "Carregamento Veículos Eléctricos",
+      "Sala de Condomínio",
+      "Varanda",
+      "Portaria"
+    ],
+    "equipments_en": [
+      "Cellar",
+      "Air Conditioning",
+      "Storage Room",
+      "Blackouts",
+      "Equipped kitchen",
+      "Home automation",
+      "Elevator",
+      "Electric blinds",
+      "Exhaust",
+      "Oven",
+      "Fridge",
+      "Garage",
+      "Acoustic Insulation",
+      "Thermal Insulation",
+      "Dishwasher",
+      "Washing Machine",
+      "Drier machine",
+      "Photovoltaic panels",
+      "Heated Swimming Pool",
+      "Indoor Swimming Pool",
+      "Radiant Floor Heating",
+      "Vitroceramic Cooktop",
+      "Shower",
+      "High Security Door",
+      "Electric gate",
+      "Wardrobes",
+      "Sauna",
+      "Solar panels",
+      "Terrace",
+      "Heated Towel Rack",
+      "Video Doorman",
+      "Double Glazed",
+      "Microwave Oven",
+      "EV charging station",
+      "Condominium Room",
+      "Balcony",
+      "Lobby"
+    ],
+    "equipments_fr": [
+      "Cave à vin",
+      "Climatisation",
+      "Rangement",
+      "Coupures de courant",
+      "Cuisine équipée",
+      "Automatisation de la maison",
+      "Ascenseur",
+      "Stores électriques",
+      "Échappement",
+      "Four",
+      "Frigo",
+      "Garage",
+      "Isolation sonore",
+      "Isolation thermique",
+      "Lave-vaisselle",
+      "Machine à laver",
+      "Machine sécheuse",
+      "Panneaux photovoltaïques",
+      "Piscine chauffée",
+      "Piscine intérieure",
+      "Chauffage radiant au sol",
+      "Table de cuisson vitrocéramique",
+      "Douche",
+      "Porte haute sécurité",
+      "Portail électrique",
+      "Armoires",
+      "Sauna",
+      "Panneaux solaires",
+      "Terrasse",
+      "Porte-serviettes chauffant",
+      "Portier vidéo",
+      "Double vitrage",
+      "Micro-ondes",
+      "Borne de recharge pour voitures électriques",
+      "Salle de condominium",
+      "Balcon",
+      "Hall"
+    ],
+    "floor": 2,
+    "fraction": "2C",
+    "gross_private_area": 180,
+    "id": "a0cTg000005xxArIAI",
+    "is_exclusive": true,
+    "languages": [
+      "pt",
+      "en",
+      "fr"
+    ],
+    "last_updated": "2025-02-06T06:32:02.796Z",
+    "latitude": 38.7313394,
+    "longitude": -9.148567175,
+    "outdoor_area": 19,
+    "parent_property_id": "a0cTg000005w0BFIAY",
+    "parish": "Avenidas Novas",
+    "parish_id": "lisboa_avenidas-novas",
+    "parking_spaces": 2,
+    "phone": "+351 214 826 830",
+    "photos": [
+      {
+        "main_photo": true,
+        "sequence": 1,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_14_final_1737807170815.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 2,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_06_final_1737807358656.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 3,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_03_final_02_1737807170815.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 4,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_28_final_2_1737807170816.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 5,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_29_final_02_1737807170816.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 6,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_07_final_1737807358658.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 7,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_11_final_1737807170815.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 8,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_16_final_2_1737807170816.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 9,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_10_final_1737807170815.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 10,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_04_final_02_1737807358656.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 11,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_05_final_1737807358656.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 12,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_12_final_02_1737807170815.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 13,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_26_final_02_1737807358658.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 14,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_27_final_02_1737807170816.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 15,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_08_final_02_1737807358658.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 16,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_01_final_02_1737807358656.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 17,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_02_final_02_1737807170814.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 18,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_25_final_02_1737807170816.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 19,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_13_final_1737807170815.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 20,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_20_final_2_1737807091866.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 21,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_21_final_1737807091866.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 22,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_22_final_02_1737807091867.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 23,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_09_final_02_1737807091866.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 24,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_19_final_02_1737807091866.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 25,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_23_final_1737807091867.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 26,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_18_final_2_2_1737807044395.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 27,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_17_final_1737807044394.jpg"
+      },
+      {
+        "main_photo": false,
+        "sequence": 28,
+        "url": "https://static.portadafrente.com/PF36036/TOMAS+RIBEIRO+79+-+QUIET_24_final_2_2_1737807044395.jpg"
+      }
+    ],
+    "plan_url": "https://portadafrente.my.salesforce.com/sfc/p/1t000000D6v6/a/Tg0000036XQz/.BGH895_7IXVrZS7LK_uCr4ZfUvh8XjtzW_3G.W_dEU",
+    "postal_code": "1050-227",
+    "price": 2200000,
+    "price_on_application": false,
+    "published_at": "2025-01-27",
+    "rooms": 3,
+    "slug_url": "apartamento-t3-lisboa-venda-a0cTg000005xxArIAI",
+    "slug_url_en": "3-bedroom-apartment-lisboa-venda-a0cTg000005xxArIAI",
+    "slug_url_fr": "appartement-4-pieces-lisboa-venda-a0cTg000005xxArIAI",
+    "state_id": "under-construction",
+    "surroundings": [
+      "Áreas de Lazer Infantil",
+      "Banco",
+      "Centro Comercial",
+      "Centro da Cidade",
+      "Escola",
+      "Espaços Verdes",
+      "Estação Ferroviária",
+      "Farmácia",
+      "Ginásio",
+      "Hipermercado",
+      "Mercado",
+      "Orientação Solar Nascente",
+      "Orientação Solar Norte",
+      "Orientação Solar Poente",
+      "Orientação Solar Sul",
+      "Praça Táxis",
+      "Transportes Públicos",
+      "Vista para Cidade",
+      "Zona Comercial",
+      "Zona Histórica",
+      "Estacionamento"
+    ],
+    "surroundings_en": [
+      "Children's play areas",
+      "Bank",
+      "Shopping center",
+      "Town centre",
+      "School",
+      "Green spaces",
+      "Train station",
+      "Pharmacy",
+      "Gym",
+      "Hypermarket",
+      "Mart",
+      "Rising Solar Orientation",
+      "Solar Orientation North",
+      "Solar Orientation West",
+      "Solar Orientation South",
+      "Taxis Square",
+      "Public Transportation",
+      "City View",
+      "Commercial Area",
+      "Historic Area",
+      "Parking"
+    ],
+    "surroundings_fr": [
+      "Aires de jeux pour enfants",
+      "Banque",
+      "Centre commercial",
+      "Centre-ville",
+      "École",
+      "Espaces verts",
+      "Gare",
+      "Pharmacie",
+      "Gym",
+      "grande surface",
+      "Marché",
+      "Orientation solaire croissante",
+      "Orientation solaire Nord",
+      "Orientation solaire Ouest",
+      "Orientation solaire Sud",
+      "Taxis Square",
+      "Transport public",
+      "Vue de la ville",
+      "Zone commerciale",
+      "Zone historique",
+      "Parking"
+    ],
+    "title": "Apartamento T3, Lisboa",
+    "title_en": "3 Bedroom Apartment, Lisboa",
+    "title_fr": "Appartement 4 pièces, Lisboa",
+    "updated_at": "2025-02-03",
+    "zone": "Avenidas Novas",
+    "zone_id": "lisboa_avenidas-novas"
+  }

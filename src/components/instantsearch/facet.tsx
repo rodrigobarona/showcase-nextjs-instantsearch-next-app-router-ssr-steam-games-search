@@ -17,30 +17,89 @@ interface FacetProps {
 }
 
 const Facet: React.FC<FacetProps> = ({ attribute }) => {
+  // Helper function to get the label safely
+  const getLabel = (attr: string): string => {
+    return (attributeLabelMap as Record<string, string>)[attr] || attr;
+  };
+
   const renderFacet = () => {
     if (!attribute) return null;
 
     try {
-      switch (attribute) {
-        // Price Filter
-        case "price":
-          return (
-            <AccordionItem value={attribute}>
-              <AccordionTrigger className="text-xl font-semibold">
-                {attributeLabelMap[attribute]}
-              </AccordionTrigger>
-              <AccordionContent>
-                <RangeFilter attribute={attribute} />
-              </AccordionContent>
-            </AccordionItem>
-          );
+      // Multi-select facets (OR logic)
+      if (
+        [
+          "county",
+          "parish_id",
+          "zone_id",
+          "category_id",
+          "sub_category_id",
+          "category_name",
+          "equipments",
+          "surroundings",
+        ].includes(attribute)
+      ) {
+        return (
+          <AccordionItem value={attribute}>
+            <AccordionTrigger className="text-xl font-semibold">
+              {getLabel(attribute)}
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="max-h-60 overflow-y-auto">
+                <RefinementList
+                  attribute={attribute}
+                  limit={1000}
+                  operator="or"
+                  sortBy={["count:desc"]}
+                />
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        );
+      }
 
-        // Numeric Filters with Custom Ranges
+      // Single-select facets (AND logic)
+      if (["business_type_id", "availability_ids", "state"].includes(attribute)) {
+        return (
+          <AccordionItem value={attribute}>
+            <AccordionTrigger className="text-xl font-semibold">
+              {getLabel(attribute)}
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="max-h-60 overflow-y-auto">
+                <RefinementList
+                  attribute={attribute}
+                  limit={1000}
+                  operator="and"
+                  sortBy={["count:desc"]}
+                />
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        );
+      }
+
+      // Numeric range filters
+      if (["price", "gross_private_area", "outdoor_area"].includes(attribute)) {
+        return (
+          <AccordionItem value={attribute}>
+            <AccordionTrigger className="text-xl font-semibold">
+              {getLabel(attribute)}
+            </AccordionTrigger>
+            <AccordionContent>
+              <RangeFilter attribute={attribute} />
+            </AccordionContent>
+          </AccordionItem>
+        );
+      }
+
+      // Numeric menu filters with custom ranges
+      switch (attribute) {
         case "rooms":
           return (
             <AccordionItem value={attribute}>
               <AccordionTrigger className="text-xl font-semibold">
-                {attributeLabelMap[attribute]}
+                {getLabel(attribute)}
               </AccordionTrigger>
               <AccordionContent>
                 <NumericMenu
@@ -57,11 +116,10 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
           );
 
         case "bathrooms":
-        case "parking_spaces":
           return (
             <AccordionItem value={attribute}>
               <AccordionTrigger className="text-xl font-semibold">
-                {attributeLabelMap[attribute]}
+                {getLabel(attribute)}
               </AccordionTrigger>
               <AccordionContent>
                 <NumericMenu
@@ -77,24 +135,35 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
             </AccordionItem>
           );
 
-        // List Filters
-        case "category_name":
-        case "county":
-        case "zone":
-        case "parish":
-        case "state":
-        case "business_type_id":
-        case "availability_id":
+        case "parking_spaces":
+          return (
+            <AccordionItem value={attribute}>
+              <AccordionTrigger className="text-xl font-semibold">
+                {getLabel(attribute)}
+              </AccordionTrigger>
+              <AccordionContent>
+                <NumericMenu
+                  attribute={attribute}
+                  items={[
+                    { label: "Any", end: 5 },
+                    { label: "1+", start: 1 },
+                    { label: "2+", start: 2 },
+                    { label: "3+", start: 3 },
+                  ]}
+                />
+              </AccordionContent>
+            </AccordionItem>
+          );
+
+        // Boolean filters
         case "is_exclusive":
           return (
             <AccordionItem value={attribute}>
               <AccordionTrigger className="text-xl font-semibold">
-                {attributeLabelMap[attribute]}
+                {getLabel(attribute)}
               </AccordionTrigger>
               <AccordionContent>
-                <div className="max-h-60 overflow-y-auto">
-                  <RefinementList attribute={attribute} limit={1000} />
-                </div>
+                <RefinementList attribute={attribute} limit={2} operator="and" />
               </AccordionContent>
             </AccordionItem>
           );

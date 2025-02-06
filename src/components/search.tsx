@@ -53,9 +53,25 @@ export default function Search() {
           "parking_spaces",
           "zone",
           "county",
+          "parish_id",
+          "zone_id",
           "price",
           "business_type_id",
-          "availability_id",
+          "availability_ids",
+          "equipments",
+          "surroundings",
+          "category_id",
+          "sub_category_id",
+        ]}
+        disjunctiveFacets={[
+          "county",
+          "parish_id",
+          "zone_id",
+          "category_id",
+          "sub_category_id",
+          "category_name",
+          "equipments",
+          "surroundings",
         ]}
         maxValuesPerFacet={1000}
       />

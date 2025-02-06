@@ -42,41 +42,85 @@ export default function Search() {
     <InstantSearchNext
       searchClient={typesenseInstantsearchAdapter.searchClient}
       indexName="properties"
-      routing
-      future={{ preserveSharedStateOnUnmount: true }}
+      future={{
+        preserveSharedStateOnUnmount: true,
+      }}
+      initialUiState={{
+        properties: {
+          query: "",
+          page: 1,
+          hitsPerPage: 12,
+          sortBy: "properties",
+          refinementList: {},
+          range: {},
+        },
+      }}
+      routing={{
+        stateMapping: {
+          stateToRoute(uiState) {
+            return {
+              q: uiState.properties?.query,
+              p: uiState.properties?.page,
+              refinementList: uiState.properties?.refinementList,
+              range: uiState.properties?.range,
+              sortBy: uiState.properties?.sortBy,
+              hitsPerPage: uiState.properties?.hitsPerPage,
+            };
+          },
+          routeToState(routeState) {
+            return {
+              properties: {
+                query: routeState.q,
+                page: routeState.p,
+                refinementList: routeState.refinementList,
+                range: routeState.range,
+                sortBy: routeState.sortBy,
+                hitsPerPage: routeState.hitsPerPage,
+              },
+            };
+          },
+        },
+      }}
     >
       <Configure
         facets={[
-          "category_name",
+          // Category related facets
+          "category_name", // PT version
+          "category_name_en", // EN version
+          "category_name_fr", // FR version
+          "sub_category_name",
+
+          // Location related facets
+          "county",
+          "zone",
+          "parish",
+
+          // Property details facets
           "rooms",
           "bathrooms",
           "parking_spaces",
-          "zone",
-          "county",
-          "parish_id",
-          "zone_id",
           "price",
           "business_type_id",
           "availability_ids",
-          "equipments",
-          "surroundings",
-          "category_id",
-          "sub_category_id",
         ]}
         disjunctiveFacets={[
+          // Location facets (multi-select)
           "county",
-          "parish_id",
-          "zone_id",
-          "category_id",
-          "sub_category_id",
-          "category_name",
-          "equipments",
-          "surroundings",
+          "zone",
+          "parish",
+
+          // Category facets (multi-select)
+          "category_name", // PT version
+          "category_name_en", // EN version
+          "category_name_fr", // FR version
+          "sub_category_name",
         ]}
         maxValuesPerFacet={1000}
+        hitsPerPage={12}
       />
+
       <div className="flex flex-col px-2 lg:px-0">
-        {mounted ? (
+        {mounted && (
           <>
             <div className="flex justify-end gap-3 items-end">
               <CurrentRefinements />
@@ -88,12 +132,12 @@ export default function Search() {
                 <DynamicWidgets fallbackComponent={Facet} />
               </aside>
               <div className="flex-1 flex-col">
-                <SearchBox />
+                <SearchBox placeholder="Search properties..." />
                 <InfiniteHits />
               </div>
             </div>
           </>
-        ) : null}
+        )}
       </div>
     </InstantSearchNext>
   );

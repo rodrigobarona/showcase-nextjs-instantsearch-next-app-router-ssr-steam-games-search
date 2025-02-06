@@ -29,14 +29,15 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
       // Multi-select facets (OR logic)
       if (
         [
+          // Location facets
           "county",
-          "parish_id",
-          "zone_id",
-          "category_id",
-          "sub_category_id",
+          "zone",
+          "parish",
+          // Category facets
           "category_name",
-          "equipments",
-          "surroundings",
+          "category_name_en",
+          "category_name_fr",
+          "sub_category_name",
         ].includes(attribute)
       ) {
         return (
@@ -48,9 +49,11 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
               <div className="max-h-60 overflow-y-auto">
                 <RefinementList
                   attribute={attribute}
-                  limit={1000}
+                  limit={10}
                   operator="or"
-                  sortBy={["count:desc"]}
+                  showMore
+                  showMoreLimit={50}
+                  sortBy={["count:desc", "name:asc"]}
                 />
               </div>
             </AccordionContent>
@@ -59,7 +62,7 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
       }
 
       // Single-select facets (AND logic)
-      if (["business_type_id", "availability_ids", "state"].includes(attribute)) {
+      if (["business_type_id", "availability_ids"].includes(attribute)) {
         return (
           <AccordionItem value={attribute}>
             <AccordionTrigger className="text-xl font-semibold">
@@ -69,8 +72,10 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
               <div className="max-h-60 overflow-y-auto">
                 <RefinementList
                   attribute={attribute}
-                  limit={1000}
+                  limit={10}
                   operator="and"
+                  showMore
+                  showMoreLimit={50}
                   sortBy={["count:desc"]}
                 />
               </div>
@@ -80,7 +85,7 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
       }
 
       // Numeric range filters
-      if (["price", "gross_private_area", "outdoor_area"].includes(attribute)) {
+      if (["price"].includes(attribute)) {
         return (
           <AccordionItem value={attribute}>
             <AccordionTrigger className="text-xl font-semibold">
@@ -151,19 +156,6 @@ const Facet: React.FC<FacetProps> = ({ attribute }) => {
                     { label: "3+", start: 3 },
                   ]}
                 />
-              </AccordionContent>
-            </AccordionItem>
-          );
-
-        // Boolean filters
-        case "is_exclusive":
-          return (
-            <AccordionItem value={attribute}>
-              <AccordionTrigger className="text-xl font-semibold">
-                {getLabel(attribute)}
-              </AccordionTrigger>
-              <AccordionContent>
-                <RefinementList attribute={attribute} limit={2} operator="and" />
               </AccordionContent>
             </AccordionItem>
           );

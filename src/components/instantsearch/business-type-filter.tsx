@@ -13,14 +13,18 @@ export function BusinessTypeFilter(props: UseRefinementListProps) {
   const { items, refine } = useRefinementList({
     ...props,
     attribute: "business_type_id",
+    operator: "and", // Ensure strict matching
   });
   const [businessType, setBusinessType] = useQueryState("business_type");
 
-  // Create a map of existing items for easy lookup
+  // Create a map of existing items for easy lookup using lower-case keys
   const itemsMap = new Map(items.map((item) => [item.value.toLowerCase(), item]));
 
-  // Get the current value, defaulting to "sale" if none is selected
-  const currentValue = businessType || items.find((item) => item.isRefined)?.value || "sale";
+  // Find the currently refined item
+  const refinedItem = items.find((item) => item.isRefined);
+
+  // Get current value from URL or refined item, without a default fallback
+  const currentValue = businessType || (refinedItem?.value.toLowerCase() ?? "");
 
   return (
     <ToggleGroup
@@ -28,24 +32,20 @@ export function BusinessTypeFilter(props: UseRefinementListProps) {
       className="w-full"
       value={currentValue}
       onValueChange={(value) => {
-        // If trying to unselect (value is empty) or selecting the same value, do nothing
-        if (!value || value === currentValue) {
-          return;
-        }
+        if (!value) return;
 
-        // Update URL state
-        setBusinessType(value);
+        // Clear any existing refinement first
+        items.forEach((item) => {
+          if (item.isRefined) {
+            refine(item.value);
+          }
+        });
 
-        // Unrefine the current value if it's different
-        const currentItem = items.find((item) => item.isRefined);
-        if (currentItem && currentItem.value !== value) {
-          refine(currentItem.value);
-        }
-
-        // Refine the new value
-        const newItem = items.find((item) => item.value === value);
-        if (newItem && !newItem.isRefined) {
+        // Only apply new refinement if it's different from what was cleared
+        const newItem = items.find((item) => item.value.toLowerCase() === value.toLowerCase());
+        if (newItem) {
           refine(newItem.value);
+          setBusinessType(value);
         }
       }}
     >

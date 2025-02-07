@@ -52,6 +52,7 @@ export function BusinessTypeFilter(props: UseRefinementListProps) {
       {BUSINESS_TYPES.map(({ value, label }) => {
         const item = itemsMap.get(value);
         const count = item?.count || 0;
+        const isSelected = value === currentValue;
         return (
           <ToggleGroupItem
             key={value}
@@ -60,7 +61,7 @@ export function BusinessTypeFilter(props: UseRefinementListProps) {
             aria-label={`Filter by ${label}`}
           >
             {label}
-            {count > 0 ? ` (${count})` : ""}
+            {isSelected && count > 0 ? ` (${count})` : ""}
           </ToggleGroupItem>
         );
       })}

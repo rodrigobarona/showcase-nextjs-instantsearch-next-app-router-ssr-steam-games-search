@@ -62,7 +62,7 @@ export function NumericToggleFilter({ type, ...props }: NumericToggleFilterProps
       onValueChange={(newValue) => {
         if (newValue === controlledValue) {
           // If already selected, clear the filter on both sides.
-          setValue(undefined);
+          setValue(null);
           updateFacets({ [type]: "all" });
           refine(""); // Passing an empty string clears the numeric filter in InstantSearch.
         } else {

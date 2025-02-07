@@ -35,11 +35,11 @@ export function BusinessTypeFilter(props: UseRefinementListProps) {
         if (!value) return;
 
         // Clear any existing refinement first
-        items.forEach((item) => {
+        for (const item of items) {
           if (item.isRefined) {
             refine(item.value);
           }
-        });
+        }
 
         // Only apply new refinement if it's different from what was cleared
         const newItem = items.find((item) => item.value.toLowerCase() === value.toLowerCase());

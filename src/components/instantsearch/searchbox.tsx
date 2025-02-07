@@ -2,10 +2,9 @@
 import { Input } from "@/components/ui/input";
 import { useFacetSync } from "@/hooks/useFacetState";
 import type { SearchBoxProps } from "react-instantsearch";
-import { useInstantSearch, useSearchBox } from "react-instantsearch";
+import { useInstantSearch } from "react-instantsearch";
 
 export const SearchBox = (props: SearchBoxProps) => {
-  const { refine } = useSearchBox(props);
   const { facetState, updateFacets } = useFacetSync();
   const { setIndexUiState } = useInstantSearch();
 
@@ -31,7 +30,7 @@ export const SearchBox = (props: SearchBoxProps) => {
         type="text"
         className="my-4 bg-background border rounded-lg p-6 focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
         onChange={handleChange}
-        placeholder="Search properties..."
+        placeholder={props.placeholder}
         value={facetState.q || ""}
       />
     </form>

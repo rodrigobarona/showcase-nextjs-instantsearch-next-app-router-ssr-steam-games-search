@@ -6,10 +6,9 @@ import { HitsPerPageSelect } from "@/components/instantsearch/hits-per-page-sele
 import { InfiniteHits } from "@/components/instantsearch/infinite-hits";
 import { SearchBox } from "@/components/instantsearch/searchbox";
 import { SortBy } from "@/components/instantsearch/sort-by";
-import { facetParsers } from "@/hooks/useFacetState";
+import { useFacetSync } from "@/hooks/useFacetState";
 import { typesenseConfig } from "@/lib/typesense";
-import { useQueryStates } from "nuqs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Configure, useInstantSearch } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
@@ -39,16 +38,18 @@ interface SearchProps {
 
 function SearchContent() {
   const { uiState } = useInstantSearch();
-  const [, setFacetState] = useQueryStates(facetParsers, {
-    history: "push",
-    shallow: true,
-    throttleMs: 100,
-  });
+  const { updateFacets } = useFacetSync();
+  const prevStateRef = useRef<typeof uiState.properties>();
 
   // Subscribe to search state changes
   const currentState = uiState.properties || {};
 
   useEffect(() => {
+    // Skip the first render and if the state hasn't changed
+    if (!currentState || JSON.stringify(prevStateRef.current) === JSON.stringify(currentState)) {
+      return;
+    }
+
     // Helper function to format range values
     const formatRange = (range: number[] | undefined) => {
       if (!range || range.length !== 2) return "";
@@ -56,7 +57,7 @@ function SearchContent() {
     };
 
     // Update URL state when search state changes
-    setFacetState({
+    updateFacets({
       q: currentState.query || "",
       business_type: currentState.refinementList?.business_type_id?.[0] || "",
       rooms: currentState.refinementList?.rooms?.[0] || "all",
@@ -80,7 +81,10 @@ function SearchContent() {
       sortBy: currentState.sortBy || "properties",
       hitsPerPage: currentState.hitsPerPage || 12,
     });
-  }, [currentState, setFacetState]);
+
+    // Update the ref after the state has been updated
+    prevStateRef.current = currentState;
+  }, [currentState, updateFacets]);
 
   return (
     <div className="flex flex-col px-2 lg:px-0">
@@ -106,11 +110,7 @@ function SearchContent() {
 
 export default function Search({ initialParams }: SearchProps) {
   const [mounted, setMounted] = useState(false);
-  const [facetState, setFacetState] = useQueryStates(facetParsers, {
-    history: "push",
-    shallow: true,
-    throttleMs: 100,
-  });
+  const { facetState, setFacetState } = useFacetSync();
 
   useEffect(() => {
     setMounted(true);

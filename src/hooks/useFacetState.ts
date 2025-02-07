@@ -1,6 +1,6 @@
 "use client";
 
-import { parseAsBoolean, parseAsInteger, parseAsString } from "nuqs";
+import { parseAsBoolean, parseAsInteger, parseAsString, useQueryStates } from "nuqs";
 
 // Client-side parsers for use with useQueryStates
 export const facetParsers = {
@@ -31,5 +31,27 @@ export const facetParsers = {
 } as const;
 
 export type FacetState = {
-  [K in keyof typeof facetParsers]: string;
+  [K in keyof typeof facetParsers]: ReturnType<(typeof facetParsers)[K]["parse"]>;
 };
+
+// Custom hook to manage all facet states
+export function useFacetSync(options = { history: "push" as const }) {
+  const [facetState, setFacetState] = useQueryStates(facetParsers, {
+    ...options,
+    shallow: true,
+    throttleMs: 100,
+  });
+
+  const updateFacets = (updates: Partial<FacetState>) => {
+    setFacetState((current) => ({
+      ...current,
+      ...updates,
+    }));
+  };
+
+  return {
+    facetState,
+    setFacetState,
+    updateFacets,
+  };
+}

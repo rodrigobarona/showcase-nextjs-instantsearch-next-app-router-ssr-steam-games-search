@@ -1,14 +1,14 @@
 "use client";
 
 import { CurrentRefinements } from "@/components/instantsearch/current-refinements";
-import { Facet } from "@/components/instantsearch/facet";
+import { Facet, FACET_ORDER } from "@/components/instantsearch/facet";
 import { HitsPerPageSelect } from "@/components/instantsearch/hits-per-page-select";
 import { InfiniteHits } from "@/components/instantsearch/infinite-hits";
 import { SearchBox } from "@/components/instantsearch/searchbox";
 import { SortBy } from "@/components/instantsearch/sort-by";
 import { typesenseConfig } from "@/lib/typesense";
 import { useEffect, useState } from "react";
-import { Configure, DynamicWidgets } from "react-instantsearch";
+import { Configure } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
 
@@ -108,32 +108,17 @@ export default function Search() {
       }}
     >
       <Configure
-        facets={[
-          // Category related facets
-          "category_name",
-          "category_name_en",
-          "category_name_fr",
-          "sub_category_name",
-          // Location related facets
-          "county",
-          "zone",
-          "parish",
-          // Property details facets
-          "rooms",
-          "bathrooms",
-          "parking_spaces",
-          "price",
-          "business_type_id",
-          "availability_ids",
-        ]}
+        facets={[...FACET_ORDER]}
         disjunctiveFacets={[
           "county",
           "zone",
           "parish",
           "category_name",
-          "category_name_en",
-          "category_name_fr",
           "sub_category_name",
+          "state_id",
+          "equipments",
+          "surroundings",
+          "business_type_id",
         ]}
         maxValuesPerFacet={1000}
         hitsPerPage={12}
@@ -147,7 +132,9 @@ export default function Search() {
         </div>
         <div className="flex">
           <aside className="xl:flex flex-col gap-3 mr-10 mt-16 hidden">
-            <DynamicWidgets fallbackComponent={Facet} />
+            {FACET_ORDER.map((attribute) => (
+              <Facet key={attribute} attribute={attribute} />
+            ))}
           </aside>
           <div className="flex-1 flex-col">
             <SearchBox placeholder="Search properties..." />

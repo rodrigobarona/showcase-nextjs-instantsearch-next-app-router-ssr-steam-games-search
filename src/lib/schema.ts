@@ -34,22 +34,23 @@ export const propertySchema = z.object({
 });
 
 export const attributeLabelMap = {
-  price: "Price",
+  business_type_id: "Transaction Type",
   rooms: "Bedrooms",
-  bathrooms: "Bathrooms",
-  parking_spaces: "Parking Spaces",
-  category_name: "Property Type",
+  price: "Price",
   county: "County",
   zone: "Zone",
   parish: "Parish",
-  gross_build_area: "Gross Build Area",
-  land_area: "Land Area",
-  outdoor_area: "Outdoor Area",
-  gross_private_area: "Private Area",
+  category_name: "Property Type",
+  sub_category_name: "Property Subtype",
   state: "Property State",
-  business_type_id: "Transaction Type",
-  availability_ids: "Availability",
-  is_exclusive: "Exclusive Listings",
+  equipments: "Equipment",
+  bathrooms: "Bathrooms",
+  gross_private_area: "Private Area",
+  published_at: "Publication Date",
+  parking_spaces: "Parking Spaces",
+  is_exclusive: "Exclusive Properties",
+  surroundings: "Surroundings",
+  // Keep other existing mappings
 };
 
 export const typesenseSchema = z.object({

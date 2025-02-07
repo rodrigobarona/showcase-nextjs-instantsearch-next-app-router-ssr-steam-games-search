@@ -14,16 +14,15 @@ export function HitsPerPageSelect(props: UseHitsPerPageProps) {
 
   return (
     <Select
-      onValueChange={(value) => {
-        refine(Number(value));
-      }}
+      onValueChange={(value) => refine(Number(value))}
+      value={String(items.find((item) => item.isRefined)?.value || items[0].value)}
     >
-      <SelectTrigger className="lg:w-1/5 w-2/3 mt-2 bg-background">
-        <SelectValue placeholder="Results per Page" />
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select hits per page" />
       </SelectTrigger>
       <SelectContent>
         {items.map((item) => (
-          <SelectItem key={item.value} value={item.value.toString()}>
+          <SelectItem key={item.value} value={String(item.value)}>
             {item.label}
           </SelectItem>
         ))}

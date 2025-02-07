@@ -30,6 +30,10 @@ const sortByItems = [
   { label: "Price (Low to High)", value: "properties/sort/price:asc" },
   { label: "Price (High to Low)", value: "properties/sort/price:desc" },
   { label: "Rooms", value: "properties/sort/rooms:desc" },
+  { label: "Bathrooms", value: "properties/sort/bathrooms:desc" },
+  { label: "Area (Low to High)", value: "properties/sort/gross_private_area:asc" },
+  { label: "Area (High to Low)", value: "properties/sort/gross_private_area:desc" },
+  { label: "Parking Spaces", value: "properties/sort/parking_spaces:desc" },
 ];
 
 interface SearchProps {
@@ -41,10 +45,9 @@ function SearchContent() {
   const { updateFacets } = useFacetSync();
   const prevStateRef = useRef<typeof uiState.properties>();
 
-  // Subscribe to search state changes
-  const currentState = uiState.properties || {};
-
   useEffect(() => {
+    const currentState = uiState.properties || {};
+
     // Skip the first render and if the state hasn't changed
     if (!currentState || JSON.stringify(prevStateRef.current) === JSON.stringify(currentState)) {
       return;
@@ -84,7 +87,7 @@ function SearchContent() {
 
     // Update the ref after the state has been updated
     prevStateRef.current = currentState;
-  }, [currentState, updateFacets]);
+  }, [uiState.properties, updateFacets]);
 
   return (
     <div className="flex flex-col px-2 lg:px-0">

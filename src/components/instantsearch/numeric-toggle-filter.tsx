@@ -1,6 +1,7 @@
 "use client";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useFacetSync } from "@/hooks/useFacetState";
 import { useQueryState } from "nuqs";
 import { useNumericMenu, type UseNumericMenuProps } from "react-instantsearch";
 
@@ -22,11 +23,12 @@ const ROOM_OPTIONS: NumericOption[] = [
   { label: "4+", value: "gte4", start: 4 },
 ];
 
+// For bathrooms we remove "Any" and use "1+", "2+", "3+", and "4+"
+// When nothing is selected the filter is cleared so all results are shown.
 const BATHROOM_OPTIONS: NumericOption[] = [
-  { label: "Any", value: "all" },
-  { label: "1+", value: "gte1", start: 1 },
-  { label: "2+", value: "gte2", start: 2 },
-  { label: "3+", value: "gte3", start: 3 },
+  { label: "1", value: "eq1", start: 1, end: 1 },
+  { label: "2", value: "eq2", start: 2, end: 2 },
+  { label: "3", value: "eq3", start: 3, end: 3 },
   { label: "4+", value: "gte4", start: 4 },
 ];
 
@@ -41,20 +43,16 @@ export function NumericToggleFilter({ type, ...props }: NumericToggleFilterProps
     items: options,
   });
   // useQueryState holds the string-based value from the URL.
-  // For rooms, we want the unselected state (showing all results) to be empty.
   const [value, setValue] = useQueryState(type);
+  const { updateFacets } = useFacetSync();
 
   // Determine the controlled value. If no value is set in the querystring,
-  // then we check if instantsearch has any item refined.
-  // For bathrooms we default to "all" when nothing is refined.
+  // then we check if InstantSearch has any item refined.
   let controlledValue: string | undefined;
   if (typeof value === "string") {
     controlledValue = value;
   } else {
     controlledValue = items.find((item) => item.isRefined)?.value;
-    if (!controlledValue && type === "bathrooms") {
-      controlledValue = "all";
-    }
   }
 
   return (
@@ -63,11 +61,14 @@ export function NumericToggleFilter({ type, ...props }: NumericToggleFilterProps
       className="w-full flex flex-wrap gap-1"
       onValueChange={(newValue) => {
         if (newValue === controlledValue) {
-          // If already selected, clear the filter (like unchecking a checkbox)
+          // If already selected, clear the filter on both sides.
           setValue(undefined);
-          refine(""); // Passing an empty string to clear the numeric filter
+          updateFacets({ [type]: "all" });
+          refine(""); // Passing an empty string clears the numeric filter in InstantSearch.
         } else {
+          // Set the new filter and update facet state.
           setValue(newValue);
+          updateFacets({ [type]: newValue });
           refine(newValue);
         }
       }}

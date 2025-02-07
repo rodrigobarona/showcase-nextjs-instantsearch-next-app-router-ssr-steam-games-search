@@ -1,6 +1,7 @@
 "use client";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useQueryState } from "nuqs";
 import { useRefinementList, type UseRefinementListProps } from "react-instantsearch";
 
 const BUSINESS_TYPES = [
@@ -9,39 +10,48 @@ const BUSINESS_TYPES = [
 ] as const;
 
 export function BusinessTypeFilter(props: UseRefinementListProps) {
-  const { items, refine } = useRefinementList(props);
+  const { items, refine } = useRefinementList({
+    ...props,
+    attribute: "business_type_id",
+  });
+  const [businessType, setBusinessType] = useQueryState("business_type");
 
   // Create a map of existing items for easy lookup
   const itemsMap = new Map(items.map((item) => [item.value.toLowerCase(), item]));
+
+  // Get the current value, defaulting to "sale" if none is selected
+  const currentValue = businessType || items.find((item) => item.isRefined)?.value || "sale";
 
   return (
     <ToggleGroup
       type="single"
       className="w-full"
+      value={currentValue}
       onValueChange={(value) => {
-        // If the same value is clicked, unrefine
-        if (!value) {
-          for (const item of items) {
-            if (item.isRefined) {
-              refine(item.value);
-            }
-          }
+        // If trying to unselect (value is empty) or selecting the same value, do nothing
+        if (!value || value === currentValue) {
           return;
         }
-        // Otherwise refine the selected value
-        for (const item of items) {
-          if (item.isRefined && item.value !== value) {
-            refine(item.value);
-          }
-          if (!item.isRefined && item.value === value) {
-            refine(item.value);
-          }
+
+        // Update URL state
+        setBusinessType(value);
+
+        // Unrefine the current value if it's different
+        const currentItem = items.find((item) => item.isRefined);
+        if (currentItem && currentItem.value !== value) {
+          refine(currentItem.value);
+        }
+
+        // Refine the new value
+        const newItem = items.find((item) => item.value === value);
+        if (newItem && !newItem.isRefined) {
+          refine(newItem.value);
         }
       }}
-      value={items.find((item) => item.isRefined)?.value || ""}
     >
       {BUSINESS_TYPES.map(({ value, label }) => {
         const item = itemsMap.get(value);
+        const count = item?.count || 0;
         return (
           <ToggleGroupItem
             key={value}
@@ -49,7 +59,8 @@ export function BusinessTypeFilter(props: UseRefinementListProps) {
             className="flex-1 text-sm"
             aria-label={`Filter by ${label}`}
           >
-            {label} ({item?.count || 0})
+            {label}
+            {count > 0 ? ` (${count})` : ""}
           </ToggleGroupItem>
         );
       })}

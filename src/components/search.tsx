@@ -6,9 +6,11 @@ import { HitsPerPageSelect } from "@/components/instantsearch/hits-per-page-sele
 import { InfiniteHits } from "@/components/instantsearch/infinite-hits";
 import { SearchBox } from "@/components/instantsearch/searchbox";
 import { SortBy } from "@/components/instantsearch/sort-by";
+import { facetParsers } from "@/hooks/useFacetState";
 import { typesenseConfig } from "@/lib/typesense";
+import { useQueryStates } from "nuqs";
 import { useEffect, useState } from "react";
-import { Configure } from "react-instantsearch";
+import { Configure, useInstantSearch } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
 
@@ -31,56 +33,91 @@ const sortByItems = [
   { label: "Rooms", value: "properties/sort/rooms:desc" },
 ];
 
-interface RouteState {
-  q?: string;
-  p?: number;
-  refinementList?: Record<string, string[]>;
-  range?: Record<string, string>;
-  sortBy?: string;
-  hitsPerPage?: number;
+interface SearchProps {
+  initialParams?: Record<string, string | number | boolean>;
 }
 
-interface IndexUiState {
-  query?: string;
-  page?: number;
-  refinementList?: Record<string, string[]>;
-  range?: Record<string, string>;
-  sortBy?: string;
-  hitsPerPage?: number;
+function SearchContent() {
+  const { uiState } = useInstantSearch();
+  const [, setFacetState] = useQueryStates(facetParsers, {
+    history: "push",
+    shallow: true,
+    throttleMs: 100,
+  });
+
+  // Subscribe to search state changes
+  const currentState = uiState.properties || {};
+
+  useEffect(() => {
+    // Helper function to format range values
+    const formatRange = (range: number[] | undefined) => {
+      if (!range || range.length !== 2) return "";
+      return `${range[0]}-${range[1]}`;
+    };
+
+    // Update URL state when search state changes
+    setFacetState({
+      query: currentState.query || "",
+      business_type: currentState.refinementList?.business_type_id?.[0] || "",
+      rooms: currentState.refinementList?.rooms?.[0] || "all",
+      bathrooms: currentState.refinementList?.bathrooms?.[0] || "all",
+      price_range: formatRange(currentState.range?.price as number[] | undefined),
+      county: currentState.refinementList?.county?.[0] || "",
+      zone: currentState.refinementList?.zone?.[0] || "",
+      parish: currentState.refinementList?.parish?.[0] || "",
+      category: currentState.refinementList?.category_name?.[0] || "",
+      sub_category: currentState.refinementList?.sub_category_name?.[0] || "",
+      state: currentState.refinementList?.state_id?.[0] || "",
+      equipments: currentState.refinementList?.equipments?.[0] || "",
+      gross_build_area: formatRange(currentState.range?.gross_build_area as number[] | undefined),
+      gross_private_area: formatRange(
+        currentState.range?.gross_private_area as number[] | undefined,
+      ),
+      parking: currentState.refinementList?.parking_spaces?.[0] || "",
+      is_exclusive: currentState.refinementList?.is_exclusive?.[0] === "true",
+      surroundings: currentState.refinementList?.surroundings?.[0] || "",
+      published_at: formatRange(currentState.range?.published_at as number[] | undefined),
+      sortBy: currentState.sortBy || "properties",
+      hitsPerPage: currentState.hitsPerPage || 12,
+    });
+  }, [currentState, setFacetState]);
+
+  return (
+    <div className="flex flex-col px-2 lg:px-0">
+      <div className="flex justify-end gap-3 items-end">
+        <CurrentRefinements />
+        <SortBy items={sortByItems} />
+        <HitsPerPageSelect items={hitsPerPageItems} />
+      </div>
+      <div className="flex">
+        <aside className="xl:flex flex-col gap-3 mr-10 mt-16 hidden">
+          {FACET_ORDER.map((attribute) => (
+            <Facet key={attribute} attribute={attribute} />
+          ))}
+        </aside>
+        <div className="flex-1 flex-col">
+          <SearchBox placeholder="Search properties..." />
+          <InfiniteHits />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-const uiStateMapping = {
-  stateToRoute(uiState: { properties?: IndexUiState }): RouteState {
-    const indexUiState = uiState.properties || {};
-    return {
-      q: indexUiState.query,
-      p: indexUiState.page,
-      refinementList: indexUiState.refinementList,
-      range: indexUiState.range,
-      sortBy: indexUiState.sortBy,
-      hitsPerPage: indexUiState.hitsPerPage,
-    };
-  },
-  routeToState(routeState: RouteState) {
-    return {
-      properties: {
-        query: routeState.q,
-        page: routeState.p,
-        refinementList: routeState.refinementList,
-        range: routeState.range,
-        sortBy: routeState.sortBy,
-        hitsPerPage: routeState.hitsPerPage,
-      },
-    };
-  },
-};
-
-export default function Search() {
+export default function Search({ initialParams }: SearchProps) {
   const [mounted, setMounted] = useState(false);
+  const [facetState, setFacetState] = useQueryStates(facetParsers, {
+    history: "push",
+    shallow: true,
+    throttleMs: 100,
+  });
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    if (initialParams) {
+      setFacetState(initialParams);
+    }
+  }, [initialParams, setFacetState]);
 
   if (!mounted) {
     return <div className="flex justify-center items-center h-full">Loading...</div>;
@@ -95,16 +132,17 @@ export default function Search() {
       }}
       initialUiState={{
         properties: {
-          query: "",
+          query: facetState.query || "",
           page: 1,
-          hitsPerPage: 12,
-          sortBy: "properties",
-          refinementList: {},
+          hitsPerPage: Number(facetState.hitsPerPage) || 12,
+          sortBy: facetState.sortBy || "properties",
+          refinementList: {
+            business_type_id: facetState.business_type ? [facetState.business_type] : [],
+            rooms: facetState.rooms !== "all" ? [facetState.rooms] : [],
+            bathrooms: facetState.bathrooms !== "all" ? [facetState.bathrooms] : [],
+          },
           range: {},
         },
-      }}
-      routing={{
-        stateMapping: uiStateMapping,
       }}
     >
       <Configure
@@ -123,25 +161,7 @@ export default function Search() {
         maxValuesPerFacet={1000}
         hitsPerPage={12}
       />
-
-      <div className="flex flex-col px-2 lg:px-0">
-        <div className="flex justify-end gap-3 items-end">
-          <CurrentRefinements />
-          <SortBy items={sortByItems} />
-          <HitsPerPageSelect items={hitsPerPageItems} />
-        </div>
-        <div className="flex">
-          <aside className="xl:flex flex-col gap-3 mr-10 mt-16 hidden">
-            {FACET_ORDER.map((attribute) => (
-              <Facet key={attribute} attribute={attribute} />
-            ))}
-          </aside>
-          <div className="flex-1 flex-col">
-            <SearchBox placeholder="Search properties..." />
-            <InfiniteHits />
-          </div>
-        </div>
-      </div>
+      <SearchContent />
     </InstantSearchNext>
   );
 }

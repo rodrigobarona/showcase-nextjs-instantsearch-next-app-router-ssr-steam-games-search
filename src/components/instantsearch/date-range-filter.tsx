@@ -14,7 +14,7 @@ interface DateRangeFilterProps extends UseRangeProps {
 }
 
 export function DateRangeFilter({ attribute }: DateRangeFilterProps) {
-  const { range, refine, start, canRefine } = useRange({
+  const { refine, start, canRefine } = useRange({
     attribute,
   });
 

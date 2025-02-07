@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useState } from "react";
 import type { UseRefinementListProps } from "react-instantsearch";
 import { useRefinementList } from "react-instantsearch";
 
@@ -10,12 +11,11 @@ const INITIAL_LIMIT = 10;
 const SHOW_MORE_LIMIT = 200;
 
 export function RefinementList(props: UseRefinementListProps) {
-  const { items, refine, showMore, canToggleShowMore, isShowingMore, toggleShowMore } =
-    useRefinementList({
-      ...props,
-      limit: INITIAL_LIMIT,
-      showMoreLimit: SHOW_MORE_LIMIT,
-    });
+  const [showingMore, setShowingMore] = useState(false);
+  const { items, refine } = useRefinementList({
+    ...props,
+    limit: showingMore ? SHOW_MORE_LIMIT : INITIAL_LIMIT,
+  });
 
   // If there are no items and this isn't just an empty result,
   // it likely means there's an issue with the facet
@@ -46,14 +46,14 @@ export function RefinementList(props: UseRefinementListProps) {
   return (
     <div className="space-y-2">
       <ScrollArea className="h-[200px] rounded-md">{refinementList}</ScrollArea>
-      {showMore && canToggleShowMore && items.length > INITIAL_LIMIT && (
+      {items.length > INITIAL_LIMIT && (
         <Button
           variant="ghost"
           size="sm"
-          onClick={toggleShowMore}
+          onClick={() => setShowingMore(!showingMore)}
           className="w-full text-xs hover:bg-accent hover:text-accent-foreground"
         >
-          {isShowingMore ? "Show less" : `Show more (${items.length - INITIAL_LIMIT} more)`}
+          {showingMore ? "Show less" : `Show more (${items.length - INITIAL_LIMIT} more)`}
         </Button>
       )}
     </div>

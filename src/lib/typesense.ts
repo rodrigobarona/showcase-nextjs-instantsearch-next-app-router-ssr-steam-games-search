@@ -9,7 +9,9 @@ const typesenseConfig: ConfigurationOptions = {
     },
   ],
   apiKey: process.env.NEXT_PUBLIC_TYPESENSE_SEARCH_ONLY_API_KEY || "",
-  connectionTimeoutSeconds: 2,
+  connectionTimeoutSeconds: 10,
+  numRetries: 3,
+  retryIntervalSeconds: 1,
 };
 
 export { typesenseConfig };

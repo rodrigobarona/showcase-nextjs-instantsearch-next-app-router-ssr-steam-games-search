@@ -1,6 +1,7 @@
 "use client";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useQueryState } from "nuqs";
 import { useNumericMenu, type UseNumericMenuProps } from "react-instantsearch";
 
 interface NumericOption {
@@ -37,18 +38,22 @@ export function NumericToggleFilter({ type, ...props }: NumericToggleFilterProps
     ...props,
     items: options,
   });
+  const [value, setValue] = useQueryState(type);
 
   return (
     <ToggleGroup
       type="single"
       className="w-full flex flex-wrap gap-1"
-      onValueChange={(value) => {
-        const selectedItem = items.find((item) => item.value === value);
+      onValueChange={(newValue) => {
+        // Update URL state
+        setValue(newValue || "all");
+
+        const selectedItem = items.find((item) => item.value === newValue);
         if (selectedItem) {
           refine(selectedItem.value);
         }
       }}
-      value={items.find((item) => item.isRefined)?.value || "all"}
+      value={value || items.find((item) => item.isRefined)?.value || "all"}
     >
       {items.map((item) => (
         <ToggleGroupItem

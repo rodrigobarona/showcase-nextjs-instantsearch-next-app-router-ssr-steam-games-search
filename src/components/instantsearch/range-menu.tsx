@@ -19,7 +19,9 @@ export function RangeFilter({ attribute }: RangeFilterProps) {
   const [minValue, maxValue] = start;
 
   const handleChange = (values: number[]) => {
-    refine(values);
+    // Ensure we always have exactly two values
+    const [newMin = min, newMax = max] = values;
+    refine([newMin, newMax]);
   };
 
   return (

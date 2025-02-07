@@ -1,0 +1,33 @@
+import { parseAsBoolean, parseAsInteger, parseAsString } from "nuqs/server";
+
+// Define parsers for each URL parameter
+export const facetParsers = {
+  // Search parameters
+  query: parseAsString.withDefault(""),
+  page: parseAsInteger.withDefault(1),
+  hitsPerPage: parseAsInteger.withDefault(12),
+  sortBy: parseAsString.withDefault("properties"),
+
+  // Filter parameters
+  business_type: parseAsString.withDefault(""),
+  rooms: parseAsString.withDefault("all"),
+  bathrooms: parseAsString.withDefault("all"),
+  price_range: parseAsString.withDefault(""),
+  county: parseAsString.withDefault(""),
+  zone: parseAsString.withDefault(""),
+  parish: parseAsString.withDefault(""),
+  category: parseAsString.withDefault(""),
+  sub_category: parseAsString.withDefault(""),
+  state: parseAsString.withDefault(""),
+  equipments: parseAsString.withDefault(""),
+  gross_build_area: parseAsString.withDefault(""),
+  gross_private_area: parseAsString.withDefault(""),
+  parking: parseAsString.withDefault(""),
+  is_exclusive: parseAsBoolean.withDefault(false),
+  surroundings: parseAsString.withDefault(""),
+  published_at: parseAsString.withDefault(""),
+} as const;
+
+export type FacetState = {
+  [K in keyof typeof facetParsers]: string;
+};

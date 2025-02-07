@@ -1,121 +1,167 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { BusinessTypeFilter } from "@/components/instantsearch/business-type-filter";
+import { DateRangeFilter } from "@/components/instantsearch/date-range-filter";
+import { NumericToggleFilter } from "@/components/instantsearch/numeric-toggle-filter";
+import { RangeFilter } from "@/components/instantsearch/range-menu";
+import { ToggleRefinement } from "@/components/instantsearch/toggle-refinement";
 import { Card } from "@/components/ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
 import { attributeLabelMap } from "@/lib/schema";
-import { NumericMenu } from "./numeric-menu";
-import { RangeFilter } from "./range-menu";
-import { RefinementList } from "./refinement-list";
+import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { RefinementList } from "react-instantsearch";
+
+// Define the order of facets
+export const FACET_ORDER = [
+  "business_type_id",
+  "rooms",
+  "price",
+  "county",
+  "zone",
+  "parish",
+  "category_name",
+  "sub_category_name",
+  "state_id",
+  "equipments",
+  "bathrooms",
+  "gross_build_area",
+  "gross_private_area",
+  "parking_spaces",
+  "is_exclusive",
+  "surroundings",
+  "published_at",
+] as const;
+
+type FacetAttribute = (typeof FACET_ORDER)[number];
+
+// Multi-select facets
+const MULTI_SELECT_FACETS = [
+  "business_type_id",
+  "category_name",
+  "sub_category_name",
+  "equipments",
+  "surroundings",
+] as const satisfies readonly FacetAttribute[];
+
+// Single-select facets
+const SINGLE_SELECT_FACETS = [
+  "state_id",
+  "county",
+  "zone",
+  "parish",
+] as const satisfies readonly FacetAttribute[];
+
+// Numeric range filters
+const RANGE_FILTERS = [
+  "price",
+  "gross_build_area",
+  "gross_private_area",
+] as const satisfies readonly FacetAttribute[];
+
+// Numeric menu attributes
+const NUMERIC_MENU_ATTRIBUTES = [
+  "rooms",
+  "bathrooms",
+  "parking_spaces",
+] as const satisfies readonly FacetAttribute[];
+
+// Toggle attributes
+const TOGGLE_ATTRIBUTES = ["is_exclusive"] as const satisfies readonly FacetAttribute[];
+
+// Date range attributes
+const DATE_RANGE_ATTRIBUTES = ["published_at"] as const satisfies readonly FacetAttribute[];
 
 interface FacetProps {
-  attribute: string;
+  attribute: FacetAttribute;
 }
 
-const Facet: React.FC<FacetProps> = ({ attribute }) => {
-  const renderFacet = () => {
-    if (!attribute) return null;
+export function Facet({ attribute }: FacetProps) {
+  const [isOpen, setIsOpen] = useState(true);
+  // Get the label for the attribute
+  const label = attributeLabelMap[attribute as keyof typeof attributeLabelMap] || attribute;
 
-    try {
-      switch (attribute) {
-        // Price Filter
-        case "price":
-          return (
-            <AccordionItem value={attribute}>
-              <AccordionTrigger className="text-xl font-semibold">
-                {attributeLabelMap[attribute]}
-              </AccordionTrigger>
-              <AccordionContent>
-                <RangeFilter attribute={attribute} />
-              </AccordionContent>
-            </AccordionItem>
-          );
-
-        // Numeric Filters with Custom Ranges
-        case "rooms":
-          return (
-            <AccordionItem value={attribute}>
-              <AccordionTrigger className="text-xl font-semibold">
-                {attributeLabelMap[attribute]}
-              </AccordionTrigger>
-              <AccordionContent>
-                <NumericMenu
-                  attribute={attribute}
-                  items={[
-                    { label: "Studio", end: 1 },
-                    { label: "1-2", start: 1, end: 2 },
-                    { label: "3-4", start: 3, end: 4 },
-                    { label: "5+", start: 5 },
-                  ]}
-                />
-              </AccordionContent>
-            </AccordionItem>
-          );
-
-        case "bathrooms":
-        case "parking_spaces":
-          return (
-            <AccordionItem value={attribute}>
-              <AccordionTrigger className="text-xl font-semibold">
-                {attributeLabelMap[attribute]}
-              </AccordionTrigger>
-              <AccordionContent>
-                <NumericMenu
-                  attribute={attribute}
-                  items={[
-                    { label: "Any", end: 5 },
-                    { label: "1+", start: 1 },
-                    { label: "2+", start: 2 },
-                    { label: "3+", start: 3 },
-                  ]}
-                />
-              </AccordionContent>
-            </AccordionItem>
-          );
-
-        // List Filters
-        case "category_name":
-        case "county":
-        case "zone":
-        case "parish":
-        case "state":
-        case "business_type_id":
-        case "availability_id":
-        case "is_exclusive":
-          return (
-            <AccordionItem value={attribute}>
-              <AccordionTrigger className="text-xl font-semibold">
-                {attributeLabelMap[attribute]}
-              </AccordionTrigger>
-              <AccordionContent>
-                <div className="max-h-60 overflow-y-auto">
-                  <RefinementList attribute={attribute} limit={1000} />
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          );
-
-        default:
-          return null;
-      }
-    } catch (err) {
-      console.error(`Error rendering facet for attribute: ${attribute}`, err);
-      return null;
+  const renderFacetContent = () => {
+    // Business type toggle
+    if (attribute === "business_type_id") {
+      return <BusinessTypeFilter attribute={attribute} operator="or" />;
     }
+
+    // Rooms toggle
+    if (attribute === "rooms") {
+      return <NumericToggleFilter attribute={attribute} type="rooms" />;
+    }
+
+    // Bathrooms toggle
+    if (attribute === "bathrooms") {
+      return <NumericToggleFilter attribute={attribute} type="bathrooms" />;
+    }
+
+    // Multi-select facets
+    if ((MULTI_SELECT_FACETS as readonly string[]).includes(attribute)) {
+      return (
+        <RefinementList attribute={attribute} operator="or" showMore={true} className="space-y-2" />
+      );
+    }
+
+    // Single-select facets
+    if ((SINGLE_SELECT_FACETS as readonly string[]).includes(attribute)) {
+      return (
+        <RefinementList
+          attribute={attribute}
+          operator="and"
+          showMore={true}
+          className="space-y-2"
+        />
+      );
+    }
+
+    // Range filters
+    if ((RANGE_FILTERS as readonly string[]).includes(attribute)) {
+      return <RangeFilter attribute={attribute} />;
+    }
+
+    // Numeric menu attributes
+    if ((NUMERIC_MENU_ATTRIBUTES as readonly string[]).includes(attribute)) {
+      return (
+        <RefinementList attribute={attribute} operator="or" showMore={true} className="space-y-2" />
+      );
+    }
+
+    // Toggle attributes
+    if ((TOGGLE_ATTRIBUTES as readonly string[]).includes(attribute)) {
+      return <ToggleRefinement attribute={attribute} label={label} on="true" off="false" />;
+    }
+
+    // Date range attributes
+    if ((DATE_RANGE_ATTRIBUTES as readonly string[]).includes(attribute)) {
+      return <DateRangeFilter attribute={attribute} />;
+    }
+
+    return null;
   };
 
-  const facetContent = renderFacet();
-  return facetContent ? (
-    <Card className="p-4 w-72 overflow-hidden relative">
-      <Accordion type="single" collapsible defaultValue={attribute}>
-        {facetContent}
-      </Accordion>
-    </Card>
-  ) : null;
-};
+  const content = renderFacetContent();
+  if (!content) return null;
 
-export { Facet };
+  return (
+    <Card className="w-full">
+      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+        <CollapsibleTrigger className="w-full">
+          <div className="flex items-center justify-between p-4 hover:bg-accent/50 transition-colors">
+            <h3 className="text-sm font-medium">{label}</h3>
+            <ChevronDown
+              className={cn("h-4 w-4 transition-transform", isOpen && "transform rotate-180")}
+            />
+          </div>
+        </CollapsibleTrigger>
+        <Separator />
+        <CollapsibleContent>
+          <div className="p-4">{content}</div>
+        </CollapsibleContent>
+      </Collapsible>
+    </Card>
+  );
+}

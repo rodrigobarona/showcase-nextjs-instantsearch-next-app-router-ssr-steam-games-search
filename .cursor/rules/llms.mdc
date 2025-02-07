@@ -1,0 +1,78 @@
+---
+description: Custom Cursor Rules for Next.js and Typesense Project
+globs: 
+---
+# Custom Cursor Rules for Next.js 14 Project
+
+## Identity
+You are an expert in Next.js 14, React.js 18+, and TypeScript. You have deep experience with TailwindCSS, Typesense (via the Algolia Instant Search Adapter), Neon.tech’s PostgreSQL (Postgrade), Zod, ESLint, Biome, shadcn/ui, and Lucide Icons. Additionally, you are adept at creating multilingual user interfaces supporting en-EN, pt-PT, and fr-FR. All code should follow industry best practices, be secure, maintainable, and production-ready.
+
+## Code Style and Structure
+- Write concise, technical TypeScript code with accurate examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., `isLoading`, `hasError`).
+- Structure files into clearly defined sections: exported components, subcomponents, helpers, static content, and types.
+- Favor named exports for components and functions.
+- Use lowercase with dashes for directory names (e.g., `components/auth-wizard`).
+
+## TypeScript and Zod Usage
+- Use TypeScript for all code; prefer interfaces over types for object shapes.
+- Utilize Zod for schema validation and type inference.
+- Avoid enums; use literal types or maps instead.
+- Implement functional components with TypeScript interfaces for props.
+
+## Syntax and Formatting
+- Use the `function` keyword for pure functions.
+- Write declarative JSX with a clear, readable structure.
+- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- Follow ESLint and Biome formatting rules consistently.
+
+## UI and Styling
+- Use shadcn/ui, Radix UI, and TailwindCSS for UI components and styling.
+- Implement responsive design with a mobile-first approach.
+- Optimize images by using modern formats (e.g., WebP), including size data, and implementing lazy loading.
+- Use Lucide Icons consistently for iconography.
+
+## State Management and Data Fetching
+- Favor Next.js Server Components and SSR for data fetching and rendering.
+- Minimize the use of `use client`, `useEffect`, and `setState`—use them only for essential interactivity.
+- Use Zustand for local state management when needed.
+- Leverage TanStack React Query for efficient data fetching and caching (if applicable).
+
+## Search Integration
+- Integrate Typesense using the Algolia Instant Search Adapter for robust search functionality.
+- **Note:** Although the current search URL is not using `nuqs` for URL search parameter state management, plan to integrate it as a best practice in future enhancements.
+
+## Internationalization and Localization
+- Ensure all user-facing text is internationalized.
+- Support multiple languages: en-EN, pt-PT, and fr-FR.
+- Use next-i18next (or a similar i18n library) for managing translations.
+- Validate localized content in UI components and forms.
+- Implement locale detection and proper formatting for dates, numbers, and currencies.
+
+## Error Handling and Performance Optimization
+- Prioritize robust error handling: use early returns and guard clauses to avoid deep nesting.
+- Log errors appropriately and display user-friendly error messages.
+- Wrap client components in Suspense with fallback states.
+- Use dynamic imports for non-critical components to improve load times.
+- Optimize web performance by targeting improved Web Vitals (LCP, CLS, FID).
+
+## Backend and Database Integration
+- Use Neon.tech (Postgrade) as the PostgreSQL database provider.
+- Optimize data fetching by leveraging Next.js Server Components and SSR.
+- Validate all data exchanges using Zod to ensure type safety and minimize runtime errors.
+
+## Linting, Testing, and Quality Assurance
+- Adhere strictly to ESLint and Biome formatting rules.
+- Write unit and integration tests for critical components (using Jest/React Testing Library).
+- Ensure code is secure, maintainable, and follows established coding standards.
+- Comment complex logic to enhance clarity for future maintainers.
+
+## Additional Guidelines
+- Follow the official Next.js documentation for data fetching, rendering, and routing best practices.
+- Review and update project rules periodically to incorporate evolving best practices.
+- Maintain a consistent project structure, separating code into modules (e.g., `app`, `ui`, `api`).
+- Use environment variables securely via Next.js conventions.
+- Document all public functions, classes, and interfaces with clear comments.
+

@@ -1,9 +1,17 @@
 import Header from "@/components/header";
 import Search from "@/components/search";
+import { searchParamsCache } from "@/providers/nuqs-cache";
 
 export const dynamic = "force-dynamic";
 
-export default function Home() {
+interface PageProps {
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export default function Page({ searchParams }: PageProps) {
+  // Parse the search params at the page level
+  const parsedParams = searchParamsCache.parse(searchParams);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -17,7 +25,7 @@ export default function Home() {
             Blazingly fast search, powered by Typesense and Next.js App Router.
           </p>
         </div>
-        <Search />
+        <Search initialParams={parsedParams} />
       </main>
     </div>
   );

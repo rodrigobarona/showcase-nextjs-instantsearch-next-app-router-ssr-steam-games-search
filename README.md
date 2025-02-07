@@ -1,96 +1,168 @@
-# 🎮 Steam Games SSR search, using Typesense, Next.js App Router and Instantsearch
+# 🎯 Porta da Frente Christie's Instant Search
 
-![image](https://github.com/user-attachments/assets/cb51a00e-00b9-4f79-9fb3-303345b2ad35)
+![Banner Image](banner.png)
 
-A blazingly fast, server-side rendered search application for Steam games, powered by Typesense, Next.js App Router, and React InstantSearch.
+A blazingly fast, server-side rendered search application for Porta da Frente Christie's website, powered by Typesense, Next.js App Router, and React InstantSearch.
 
 ## Features
 
 - Server-side rendering using Next.js App Router for improved performance and SEO
-- Instant search functionality with Typesense
-- Faceted search with dynamic filters
-- Custom UI components using shadcn/ui
+- Instant, real-time search powered by Typesense with faceted filtering
+- Dynamic filtering and sorting through custom React InstantSearch components
+- Custom-styled UI built with shadcn/ui, Radix UI, and TailwindCSS
+- Multilingual support for en-EN, pt-PT, and fr-FR
+- Robust error handling and performance optimizations following industry best practices
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
 
-   ```
-   git clone https://github.com/your-username/typesense-instantsearch-next-ssr.git
-   cd typesense-instantsearch-next-ssr
+   ```bash
+   git clone https://github.com/your-username/porta-da-frente-instantsearch.git
+   cd porta-da-frente-instantsearch
    ```
 
-2. Install dependencies:
+2. **Install dependencies:**
 
-   ```
+   ```bash
    pnpm install
    ```
 
-3. Set up Typesense:
+3. **Set up Typesense:**
 
-   - Make sure you have Docker installed
-   - Update the Typesense configuration in `src/lib/typesense.ts` if needed
+   - Ensure you have Docker installed.
+   - Adjust the Typesense configuration if needed in `src/lib/typesense.ts`.
 
-4. Index the data:
+4. **Index the data:**
 
-   ```
+   ```bash
    pnpm run index-typesense
    ```
 
-5. Start the development server:
-   ```
+5. **Start the development server:**
+
+   ```bash
    pnpm run dev
    ```
 
 ## Usage
 
-After starting the development server, open your browser and navigate to `http://localhost:3000`. You can now search for Steam games, apply filters, and explore the catalog.
+After starting the development server, open your browser and navigate to [http://localhost:3000](http://localhost:3000). You can then explore Porta da Frente Christie's property listings with instant search capabilities, dynamic filters, and faceted navigation.
 
 ## Configuration
 
-The main configuration files are:
+The key configuration files are:
 
-- `src/lib/typesense.ts`: Typesense client configuration
-- `src/lib/schema.ts`: Data schema and attribute labels
-- `docker-compose.yml`: Typesense Docker configuration
-- `tailwind.config.ts`: Tailwind CSS configuration
-- `components.json`: shadcn/ui configuration
+- **`src/lib/typesense.ts`**: Typesense client configuration.
+- **`src/lib/schema.ts`**: Data schema definitions and attribute labels.
+- **`docker-compose.yml`**: Typesense Docker configuration.
+- **`tailwind.config.ts`**: TailwindCSS configuration.
+- **`components.json`**: shadcn/ui configuration.
 
-You can modify these files to adjust the search behavior, data structure, Typesense setup, or UI styling.
+Feel free to modify these files to adjust search behavior, data structures, Typesense setup, or UI styling.
 
 ## Custom Components
 
-This project uses custom-styled React Instantsearch components built with shadcn/ui, which combines the accessibility of Radix UI with the utility-first approach of Tailwind CSS. These components are located in the `src/components/instantsearch` directory and include:
+This project makes extensive use of custom-styled React InstantSearch components (found in `src/components/instantsearch`) including:
 
-- Current Refinements
-- A Card component for Hits
-- Hits Per Page
-- Sort By Dropdown Menu
-- Facet Menu
-- Range Menu with a Slider and a Form
-- Numeric Menu with Radio Groups
+- **Current Refinements**
+- **Card Component for Hits**
+- **Hits Per Page Selector**
+- **Sort By Dropdown Menu**
+- **Facet Menu for Dynamic Filters**
+- **Range Menu with Slider/Form Elements**
+- **Numeric Menu with Radio Groups**
+
+Additional interactive UI elements (e.g., Card, Accordion, Checkbox) are implemented as client components (using `use client` directives), while all core data fetching and query logic is handled on the server side.
+
+## Data Flow & Architecture
+
+Below is the Mermaid diagram outlining the application's architecture, showing the separation between server and client components, as well as query handling to ensure that customer data remains secure:
+
+<!-- BEGIN MERMAID DIAGRAM -->
+
+```mermaid
+flowchart TD
+    %% Server Components
+    subgraph Server_Components["Server Components"]
+        SP["Home Page<br/>(src/app/page.tsx)"]
+        PP["Property Page<br/>(src/app/property/[slug]/page.tsx)"]
+        QF["Query Functions:<br/>getProperty & getRelatedProperties"]
+        ES["Export Script<br/>(src/scripts/index-typesense.ts)"]
+    end
+
+    %% Client Components
+    subgraph Client_Components["Client Components"]
+        SC["Search Component<br/>(src/components/search.tsx)"]
+        PC["PropertyContent<br/>(src/components/property-content.tsx)"]
+        UI["UI Components<br/>(Card, Accordion, Checkbox, Gallery, Hit, ThemeProvider, etc.)"]
+        MT["ModeToggle<br/>(client)"]
+        HD["Header<br/>(server) <br/>importing MT"]
+    end
+
+    %% External Data Source
+    subgraph Data_Source["External Data Source"]
+        TS["Typesense Server"]
+    end
+
+    %% Data Flow
+    SP -->|Renders| SC
+    SP -->|Renders| HD
+    PP -->|Calls| QF
+    QF -->|Queries data| TS
+    ES -->|Exports data| TS
+
+    %% Client-side search via InstantSearch
+    SC -- "InstantSearch Adapter" --> TS
+    PC -- "InstantSearch Adapter" --> TS
+
+    %% Client composition
+    PC -->|Composes with| UI
+    SC -->|Composes with| UI
+
+    %% Header Composition
+    HD --> MT
+```
+
+<!-- END MERMAID DIAGRAM -->
 
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
 
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature-branch-name`
-3. Make your changes and commit them: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature-branch-name`
-5. Submit a pull request
+1. Fork the repository.
+2. Create a new branch:
+
+   ```bash
+   git checkout -b feature-branch-name
+   ```
+
+3. Make your changes and commit them:
+
+   ```bash
+   git commit -m "Add some feature"
+   ```
+
+4. Push to your branch:
+
+   ```bash
+   git push origin feature-branch-name
+   ```
+
+5. Submit a pull request.
 
 ## Credits
 
-The dataset used in this showcase is from Terenci Claramunt's ([@terencicp](https://github.com/terencicp)) public dataset of Steam Games released from 2013 up to 2023 listed here: https://www.kaggle.com/datasets/terencicp/steam-games-december-2023
+- **Dataset & Listings**: Property data provided by Porta da Frente Christie's.
+- **Search Engine**: [Typesense](https://typesense.org/)
+- **Framework**: [Next.js](https://nextjs.org/) with the App Router.
+- **Search UI**: [React InstantSearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/)
+- **UI Libraries**: [ShadcnUI](https://ui.shadcn.com/) and [Radix UI](https://www.radix-ui.com/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Validation**: [Zod](https://zod.dev/)
 
 ## Acknowledgements
 
-- [Typesense](https://typesense.org/) for the search engine
-- [Next.js](https://nextjs.org/) for the React framework with App Router
-- [React InstantSearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/) for search UI components
-- [ShadcnUI](https://ui.shadcn.com/) for beautifully designed components
-- [Radix UI](https://www.radix-ui.com/) for accessible UI primitives
-- [Tailwind CSS](https://tailwindcss.com/) for styling
-- [Lucide React](https://lucide.dev/) for icons
-- [Zod](https://zod.dev/) for schema validation
+- Special thanks to the teams behind Typesense, Next.js, and the UI libraries that made this project possible.
+- We appreciate the contributions from the open-source community and welcome new ideas and improvements.

@@ -5,7 +5,7 @@ import { parseAsBoolean, parseAsInteger, parseAsString } from "nuqs";
 // Client-side parsers for use with useQueryStates
 export const facetParsers = {
   // Search parameters
-  query: parseAsString.withDefault(""),
+  q: parseAsString.withDefault(""),
   page: parseAsInteger.withDefault(1),
   hitsPerPage: parseAsInteger.withDefault(12),
   sortBy: parseAsString.withDefault("properties"),

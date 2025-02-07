@@ -57,7 +57,7 @@ function SearchContent() {
 
     // Update URL state when search state changes
     setFacetState({
-      query: currentState.query || "",
+      q: currentState.query || "",
       business_type: currentState.refinementList?.business_type_id?.[0] || "",
       rooms: currentState.refinementList?.rooms?.[0] || "all",
       bathrooms: currentState.refinementList?.bathrooms?.[0] || "all",
@@ -132,7 +132,7 @@ export default function Search({ initialParams }: SearchProps) {
       }}
       initialUiState={{
         properties: {
-          query: facetState.query || "",
+          query: facetState.q || "",
           page: 1,
           hitsPerPage: Number(facetState.hitsPerPage) || 12,
           sortBy: facetState.sortBy || "properties",

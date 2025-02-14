@@ -9,9 +9,9 @@ export const facetParsers = {
   sortBy: parseAsString.withDefault("properties"),
 
   // Filter parameters
-  business_type: parseAsString.withDefault(""),
-  rooms: parseAsString.withDefault("all"),
-  bathrooms: parseAsString.withDefault("all"),
+  business_type: parseAsString.withDefault("sale"),
+  rooms: parseAsString.withDefault("0"),
+  bathrooms: parseAsString.withDefault(""),
   price_range: parseAsString.withDefault(""),
   county: parseAsString.withDefault(""),
   zone: parseAsString.withDefault(""),
